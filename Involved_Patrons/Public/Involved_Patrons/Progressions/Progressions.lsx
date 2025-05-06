@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+  <version major="4" minor="0" revision="9" build="328" />
+  <region id="Progressions">
+    <node id="root">
+      <children>
+        <node id="Progression">
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="Fiend" />
+                    <attribute id="PassivesAdded" type="LSString" value="DarkOnesBlessing;InvolvedFiendPatron" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(4823a292-f584-4f7f-8434-6630c72e5411,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
+                    <attribute id="TableUUID" type="guid" value="2700b42c-3b2f-4fc7-b881-4acc4f0a3a1f" />
+                    <attribute id="UUID" type="guid" value="995c4979-50a9-49fe-b7b8-5d026e79464a" />
+                </node>
+        <node id="Progression">
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="GreatOldOne" />
+                    <attribute id="PassivesAdded" type="LSString" value="ClarifiedMortality;InvolvedGreatOldOnePatron" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="SelectSpells(65952d48-bb16-4ad7-b173-532182bf7770,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
+                    <attribute id="TableUUID" type="guid" value="216e779e-3452-466c-933d-fb5723b90802" />
+                    <attribute id="UUID" type="guid" value="3081d0f1-32ea-4c33-9350-f423ececc9b8" />
+                </node>
+        <node id="Progression">
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="Archfey" />
+                    <attribute id="PassivesAdded" type="LSString" value="InvolvedArchfeyPatron" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(489ff3dd-b93e-4a96-b553-b59c07d5cd6f);SelectSpells(e0099b15-2599-4cba-a54b-b25ae03d6519,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
+                    <attribute id="TableUUID" type="guid" value="7e1e0190-bd32-4ca6-9623-8adebeba74d4" />
+                    <attribute id="UUID" type="guid" value="5085c372-c3b7-4910-85f9-e33be18d7071" />
+                </node>
+        <node id="Progression">
+                    <attribute id="Level" type="uint8" value="1" />
+                    <attribute id="Name" type="LSString" value="Hexblade" />
+                    <attribute id="PassivesAdded" type="LSString" value="HexWarrior;HexbladesCurse;InvolvedHexbladePatron" />
+                    <attribute id="ProgressionType" type="uint8" value="1" />
+                    <attribute id="Selectors" type="LSString" value="AddSpells(c4020f68-bb82-4c45-8a4a-8c24fb400526);SelectSpells(d90e88eb-e5f9-4db2-b7ef-1dccb044839a,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
+                    <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
+                    <attribute id="UUID" type="guid" value="5d8df68e-7cc2-4e8b-b03b-74616cd13d9f" />
+                </node>
+        <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarlockSpellSlot,2,4);ActionResourceOverride(WarlockSpellSlot,0,3)" />
+                    <attribute id="Level" type="uint8" value="7" />
+                    <attribute id="Name" type="LSString" value="Warlock" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedWarlockSpellSlotLevel4" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(39efef92-9987-46e2-8c43-54052c1be535,1,WarlockInvocations)" />
+                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
+                    <attribute id="UUID" type="guid" value="23955656-459a-40b0-b648-2167e7d223d8" />
+                </node>
+        <node id="Progression">
+                    <attribute id="Boosts" type="LSString" value="ActionResource(WarlockSpellSlot,2,5);ActionResourceOverride(WarlockSpellSlot,0,4)" />
+                    <attribute id="Level" type="uint8" value="9" />
+                    <attribute id="Name" type="LSString" value="Warlock" />
+                    <attribute id="PassivesAdded" type="LSString" value="UnlockedWarlockSpellSlotLevel5" />
+                    <attribute id="ProgressionType" type="uint8" value="0" />
+                    <attribute id="Selectors" type="LSString" value="SelectPassives(a2d72748-0792-4f1e-a798-713a66d648eb,1,WarlockInvocations)" />
+                    <attribute id="TableUUID" type="guid" value="a7a958f1-d858-4021-9fa7-cf87e7d71377" />
+                    <attribute id="UUID" type="guid" value="bb998812-dab7-4d0e-aa58-d9b1fb8b3688" />
+                </node>
+      </children>
+    </node>
+  </region>
+</save>

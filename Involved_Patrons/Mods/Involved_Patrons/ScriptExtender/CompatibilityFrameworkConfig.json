@@ -1,0 +1,65 @@
+{
+    "FileVersion": 1,
+    "Progressions": [
+      {
+        "UUID": "995c4979-50a9-49fe-b7b8-5d026e79464a",
+        "Strings": [
+          {
+            "Action": "Insert",
+            "Type": "PassivesAdded",
+            "Strings": ["InvolvedFiendPatron"]
+          }
+        ]
+      },
+      {
+        "UUID": "3081d0f1-32ea-4c33-9350-f423ececc9b8",
+        "Strings": [
+          {
+            "Action": "Insert",
+            "Type": "PassivesAdded",
+            "Strings": ["InvolvedGreatOldOnePatron"]
+          }
+        ]
+      },
+      {
+        "UUID": "5085c372-c3b7-4910-85f9-e33be18d7071",
+        "Strings": [
+          {
+            "Action": "Insert",
+            "Type": "PassivesAdded",
+            "Strings": ["InvolvedArchfeyPatron"]
+          }
+        ]
+      },
+      {
+        "UUID": "5d8df68e-7cc2-4e8b-b03b-74616cd13d9f",
+        "Strings": [
+          {
+            "Action": "Insert",
+            "Type": "PassivesAdded",
+            "Strings": ["InvolvedHexbladePatron"]
+          }
+        ]
+      },
+      {
+        "UUID": "23955656-459a-40b0-b648-2167e7d223d8",
+        "Strings": [
+          {
+            "Action": "Insert",
+            "Type": "PassivesAdded",
+            "Strings": ["UnlockedWarlockSpellSlotLevel4"]
+          }
+        ]
+      },
+      {
+        "UUID": "bb998812-dab7-4d0e-aa58-d9b1fb8b3688",
+        "Strings": [
+          {
+            "Action": "Insert",
+            "Type": "PassivesAdded",
+            "Strings": ["UnlockedWarlockSpellSlotLevel5"]
+          }
+        ]
+      }
+    ]
+  }

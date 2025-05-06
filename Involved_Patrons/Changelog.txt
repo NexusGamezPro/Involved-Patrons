@@ -1,0 +1,8 @@
+2.1.1.1
+
+- Added StackId and "IGNORE" StackType to BOON_SPELLSLOT to avoid accidental stacking
+- Added shared StackId and "OVERWRITE" StackType to Patron Quests, removed removeevent and remove condition
+
+2.1.1.2
+
+- Added Favor Tracking Mechanics

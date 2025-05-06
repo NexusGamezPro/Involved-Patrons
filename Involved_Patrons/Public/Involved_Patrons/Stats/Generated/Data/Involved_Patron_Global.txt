@@ -1,0 +1,26 @@
+// Favor Tracker
+
+new entry "INVOLVED_PATRON_FAVOR_TRACKER"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "PATRON_FAVOR"
+data "StackType" "OVERWRITE"
+data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;IgnoreResting" // Without DisablePortraitIndicator for Testing
+
+new entry "INVOLVED_PATRON_FAVOR_TRACKER_WARNING"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "ApplyToDead"
+
+// Spellslot Progression Tracking
+
+new entry "UnlockedWarlockSpellSlotLevel4"
+type "PassiveData"
+using "UnlockedWarlockSpellSlotLevel1"
+data "DisplayName" "he1235c3b0e86495da35988157b3081098605;2"
+
+new entry "UnlockedWarlockSpellSlotLevel5"
+type "PassiveData"
+using "UnlockedWarlockSpellSlotLevel1"
+data "DisplayName" "h490bc5f7766a4242abacba146b8fba29450f;2"
