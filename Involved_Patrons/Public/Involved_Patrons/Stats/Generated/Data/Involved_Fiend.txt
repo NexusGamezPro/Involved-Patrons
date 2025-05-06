@@ -32,7 +32,7 @@ data "Icon" "PassiveFeature_ExpertDivination"
 data "Passives" "InvolvedFiendPatronQuestDamageFire"
 data "StackId" "PATRON_QUEST"
 data "StackType" "OVERWRITE"
-data "OnRemoveFunctors" "IF(not RemoveCause(StatusRemoveCause.External)):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
+// data "OnRemoveFunctors" "IF(not RemoveCause(StatusRemoveCause.External)):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
 data "StatusGroups" "SG_RemoveOnRespec"
 
         // Quest 2
