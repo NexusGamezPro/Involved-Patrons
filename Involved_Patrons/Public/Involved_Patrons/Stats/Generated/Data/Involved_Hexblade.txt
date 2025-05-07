@@ -76,7 +76,7 @@ new entry "INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE"
 type "StatusData"
 data "StatusType" "BOOST"
 using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
-data "Description" "h28b6a846f26240he8b2830732fa4e17a16afe57aedae5900787cdad848c96ff52d6e3b03b;1"
+data "Description" "he8b2830732fa4e17a16afe57aedae5900787;1"
 data "Passives" "InvolvedHexbladePatronQuestRelease"
 
     // Tier 3 - Highest Chance for better Rewards, 1d4

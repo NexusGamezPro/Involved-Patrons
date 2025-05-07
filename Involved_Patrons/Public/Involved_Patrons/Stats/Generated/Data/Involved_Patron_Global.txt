@@ -5,7 +5,8 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "StackId" "PATRON_FAVOR"
 data "StackType" "Overwrite"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;IgnoreResting;FreezeDuration;ApplyToDead"
+// data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;FreezeDuration;ApplyToDead"
+data "StatusPropertyFlags" "IgnoreResting;FreezeDuration;ApplyToDead" // Debugging: Not hidden
 
 new entry "INVOLVED_PATRON_FAVOR_TRACKER_WARNING"
 type "StatusData"
