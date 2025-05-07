@@ -49,7 +49,7 @@ data "StatusGroups" "SG_RemoveOnRespec"
 
 new entry "InvolvedHexbladePatronQuestEvocation"
 type "PassiveData"
-using "InvolvedHexbladePatronQuestDamageFire"
+using "InvolvedHexbladePatronQuestDamageNecrotic"
 data "StatsFunctorContext" "OnCast"
 data "Conditions" "IsSpell() and IsSpellSchool(SpellSchool.Evocation)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION)"
@@ -57,7 +57,7 @@ data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_FIRE"
+using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
 data "Description" "h6701b9ceg5045g481agb49ag8da75d8ef611;1"
 data "Passives" "InvolvedHexbladePatronQuestEvocation"
 
