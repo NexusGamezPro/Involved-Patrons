@@ -37,19 +37,19 @@ data "StatusGroups" "SG_RemoveOnRespec"
 
         // Quest 2
 
-new entry "InvolvedHexbladePatronQuestRelease"
+new entry "InvolvedHexbladePatronQuestEvocation"
 type "PassiveData"
-using "InvolvedHexbladePatronQuestDamageNecrotic"
+using "InvolvedHexbladePatronQuestDamageFire"
 data "StatsFunctorContext" "OnCast"
-data "Conditions" "Enemy(context.Target) and HasStatus('HEXBLADES_CURSE',context.Target) and IsKillingBlow()"
-data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE)"
+data "Conditions" "IsSpell() and IsSpellSchool(SpellSchool.Evocation)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION)"
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE"
+new entry "INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
+using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_FIRE"
 data "Description" "h6701b9ceg5045g481agb49ag8da75d8ef611;1"
-data "Passives" "InvolvedHexbladePatronQuestRelease"
+data "Passives" "InvolvedHexbladePatronQuestEvocation"
 
     // Tier 2 - Higher Chance for better Rewards, 1d6
 
@@ -85,6 +85,7 @@ type "StatusData"
 data "StatusType" "BOOST"
 using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
 data "Description" "h49da94e8cfd847899dd241bdce212dba8ga9;1"
+data "DescriptionParams" "2"
 data "Passives" "InvolvedHexbladePatronQuestObliterate"
 
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER"
