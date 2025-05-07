@@ -28,7 +28,7 @@ data "StatsFunctors" "IF(not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.T
 new entry "InvolvedHexbladePatronQuestDamageNecrotic"
 type "PassiveData"
 data "StatsFunctorContext" "OnDamage"
-data "Conditions" "Necrotic(context.Target) and Enemy(context.Target)"
+data "Conditions" "IsDamageTypeNecrotic(context.Target) and Enemy(context.Target)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC)"
 data "Properties" "IsHidden"
 
