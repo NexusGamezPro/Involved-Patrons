@@ -20,10 +20,3 @@ data "RemoveConditions" "not HasHigherPriorityExtraAttackQueuedHexblade('EXTRA_A
 data "RemoveEvents" "OnStatusRemoved"
 data "StatusPropertyFlags" "DisableCombatlog;DisableOverhead;DisablePortraitIndicator;ApplyToDead"
 data "OnRemoveFunctors" "IF(RemoveCause(StatusRemoveCause.Condition)):ApplyStatus(EXTRA_ATTACK_HEXBLADE, 100, 1)"
-
-new entry "EXTRA_ATTACK_HEXBLADE_TECHNICAL"
-type "StatusData"
-data "StatusType" "BOOST"
-data "DisplayName" "h94d20258g3a35g47faga913g78ef1563891f;1"
-data "Passives" "ExtraAttack"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting"
