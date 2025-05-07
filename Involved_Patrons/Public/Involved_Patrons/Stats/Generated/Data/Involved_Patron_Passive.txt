@@ -1,0 +1,11 @@
+// Hexblade Extra Attack
+
+new entry "ThirstingHexBlade_Blade"
+type "PassiveData"
+using "ExtraAttack"
+data "DisplayName" "h9d55722e88154578aa34d39edf3374e6a6c6;1"
+data "Icon" "PassiveFeature_ThirstingBlade"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnCast;OnStatusRemoved;OnStatusApplied"
+data "Conditions" "((context.HasContextFlag(StatsFunctorContext.OnCast) and ExtraAttackSpellCheck() and HasUseCosts('ActionPoint', true) and not Tagged('EXTRA_ATTACK_BLOCKED',context.Source) and not HasStatus('SLAYER_PLAYER',context.Source) and not HasStatus('SLAYER_PLAYER_10',context.Source) and TurnBased(context.Source) and (HasPactWeapon(context.Source) or HasHexbladeWeapon(context.Source))) or (context.HasContextFlag(StatsFunctorContext.OnStatusRemoved) and StatusId('INITIAL_ATTACK_TECHNICAL') and TurnBased() and (HasPactWeapon(context.Target) or HasHexbladeWeapon(context.Target))) or (context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and StatusId('EXTRA_ATTACK_HEXBLADE_Q')));"
+data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnCast)):ApplyStatus(SELF,EXTRA_ATTACK_HEXBLADE_Q,100,1);IF(context.HasContextFlag(StatsFunctorContext.OnStatusRemoved)):ApplyStatus(EXTRA_ATTACK_HEXBLADE_Q,100,1);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and not HasHigherPriorityExtraAttackQueuedHexblade('EXTRA_ATTACK_HEXBLADE_Q') and not HasAnyExtraAttackHexblade()):ApplyStatus(EXTRA_ATTACK_HEXBLADE, 100, 1)"
