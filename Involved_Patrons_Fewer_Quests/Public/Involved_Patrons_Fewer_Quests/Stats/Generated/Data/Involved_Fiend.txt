@@ -1,0 +1,8 @@
+// Progression
+
+    // Quest handling
+
+new entry "InvolvedFiendPatron"
+type "PassiveData"
+using "InvolvedFiendPatron"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_QUEST,100,1d8);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
