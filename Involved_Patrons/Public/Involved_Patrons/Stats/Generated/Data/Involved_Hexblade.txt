@@ -13,7 +13,7 @@ data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate
 
     // Favor handling - Work in Progress
 
-new entry "InvolvedFiendPatronFavor"
+new entry "InvolvedHexbladePatronFavor"
 type "PassiveData"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnStatusApplied"

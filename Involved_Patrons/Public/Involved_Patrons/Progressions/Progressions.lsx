@@ -7,7 +7,7 @@
         <node id="Progression">
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Fiend" />
-                    <attribute id="PassivesAdded" type="LSString" value="DarkOnesBlessing;InvolvedFiendPatron" />
+                    <attribute id="PassivesAdded" type="LSString" value="DarkOnesBlessing;InvolvedFiendPatron;InvolvedFiendPatronFavor" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(4823a292-f584-4f7f-8434-6630c72e5411,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
                     <attribute id="TableUUID" type="guid" value="2700b42c-3b2f-4fc7-b881-4acc4f0a3a1f" />
@@ -34,7 +34,7 @@
         <node id="Progression">
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Hexblade" />
-                    <attribute id="PassivesAdded" type="LSString" value="HexWarrior;HexbladesCurse;InvolvedHexbladePatron" />
+                    <attribute id="PassivesAdded" type="LSString" value="HexWarrior;HexbladesCurse;InvolvedHexbladePatron;InvolvedHexbladePatronFavor" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(c4020f68-bb82-4c45-8a4a-8c24fb400526);SelectSpells(d90e88eb-e5f9-4db2-b7ef-1dccb044839a,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
                     <attribute id="TableUUID" type="guid" value="2b9b50de-48e2-4b1c-b40d-6050aa85009a" />
