@@ -1,3 +1,5 @@
+local __util = require 'larian.util'
+
 function HasAnyExtraAttackHexblade(entity)
     local entity = entity or context.Target
 	local result = HasAnyStatus({'EXTRA_ATTACK','EXTRA_ATTACK_2','EXTRA_ATTACK_3','EXTRA_ATTACK_WAR_MAGIC','EXTRA_ATTACK_WAR_PRIEST','MAG_MARTIAL_EXERTION','WILDSTRIKE_EXTRA_ATTACK','WILDSTRIKE_2_EXTRA_ATTACK','STALKERS_FLURRY','EXTRA_ATTACK_THIRSTING_BLADE','EXTRA_ATTACK_HEXBLADE','COMMANDERS_STRIKE_D10','COMMANDERS_STRIKE_D8'},{},{}, entity, context.Source, false).Result
