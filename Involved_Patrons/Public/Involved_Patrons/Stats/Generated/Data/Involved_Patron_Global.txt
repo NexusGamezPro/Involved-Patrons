@@ -5,7 +5,6 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "StackId" "PATRON_FAVOR"
 data "StackType" "Overwrite"
-// data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;FreezeDuration;ApplyToDead"
 data "StatusPropertyFlags" "IgnoreResting;FreezeDuration;ApplyToDead" // Debugging: Not hidden
 
 new entry "INVOLVED_PATRON_FAVOR_TRACKER_WARNING"
@@ -16,7 +15,6 @@ data "Description" "h2353c2050c134ec8be9fafccde3ff29194a2"
 data "StackId" "PATRON_FAVOR_WARNING"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
-// data "StatusPropertyFlags" "ApplyToDead"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead" // Hidden until finished
 
 
