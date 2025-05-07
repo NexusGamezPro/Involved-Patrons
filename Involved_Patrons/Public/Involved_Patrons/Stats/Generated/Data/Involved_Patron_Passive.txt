@@ -1,6 +1,6 @@
 // Hexblade Extra Attack
 
-new entry "ThirstingHexBlade_Blade"
+new entry "ThirstingHexblade_Blade"
 type "PassiveData"
 using "ExtraAttack"
 data "DisplayName" "h9d55722e88154578aa34d39edf3374e6a6c6;1"

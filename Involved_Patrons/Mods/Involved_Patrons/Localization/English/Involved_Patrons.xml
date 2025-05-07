@@ -21,4 +21,6 @@
     <content contentuid="h0a9ccc3f804b4a068713752f54b391901c8a" version="1">Good Relatiions Description.</content>
     <content contentuid="hff06e0a0dd354845a476ade3119ad6cc1gc7" version="1">Bad Relations</content>
     <content contentuid="h720138ca9bba43afaf4fc04bbda5ef2e473d" version="1">Bad Relations Description.</content>
+    <content contentuid="hde11771e5ce94d13a75f327ea4c6cac28747" version="1">Hexblade's Thirst</content>
+    <content contentuid="h7f6f57f11c954ef1ad5e8f9286a89260422a" version="1">You gain an &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;extra attack&lt;/LSTag&gt; with your &lt;LSTag Type="Spell" Tooltip="Shout_Hexblade_Bind&gt;Hexed Weapon&lt;/LSTag&gt;.</content>
 </contentList>
