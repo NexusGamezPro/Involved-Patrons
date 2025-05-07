@@ -9,8 +9,8 @@ end
 function HasHigherPriorityExtraAttackQueuedHexblade(status, entity)
     local entity = entity or context.Target
     local eaQueuedStatuses = {'EXTRA_ATTACK_2_Q'
-        , 'EXTRA_ATTACK_HEXBLADE_Q'
         , 'EXTRA_ATTACK_Q'
+        , 'EXTRA_ATTACK_HEXBLADE_Q'
         , 'EXTRA_ATTACK_WAR_MAGIC_Q'
         , 'MAG_MARTIAL_EXERTION_Q'
         , 'WILDSTRIKE_EXTRA_ATTACK_Q'
