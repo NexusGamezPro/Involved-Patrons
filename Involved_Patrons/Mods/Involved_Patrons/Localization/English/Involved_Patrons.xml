@@ -15,4 +15,10 @@
 	<content contentuid="h6c984c10a4184662b85d709c1bcf243c1f0e" version="1">Roll all your Damage with Advantage.</content>
     <content contentuid="h48b605c4ecf24182b42fae4bc9be5d3a1362" version="1">Kill [1] Enemies with your &lt;LSTag Type="Spell" Tooltip="Shout_Hexblade_Bind&gt;Hexed Weapon&lt;/LSTag&gt; to gain the favor of your Patron.</content>
     <content contentuid="he8b2830732fa4e17a16afe57aedae5900787" version="1">Kill an Enemy afflicted by the &lt;LSTag Type="Status" Tooltip="HEXBLADES_CURSE"&gt;Hexblade's Curse&lt;/LSTag&gt; to gain the Favor of your Patron.</content>
+    <content contentuid="h78cfb3605ba443e7940ca6db26ed9dc5fcc4" version="1">Dissatisfied Patron</content>
+    <content contentuid="h2353c2050c134ec8be9fafccde3ff29194a2" version="1">You have often ignored your patron's duties. Continue to defy your patron and you will be punished. The power your patron gives you is not uncondtional.</content>
+    <content contentuid="he8255fd40760458fa2d3a5a8db798f7931c5" version="1">Good Relations</content>
+    <content contentuid="h0a9ccc3f804b4a068713752f54b391901c8a" version="1">Good Relatiions Description.</content>
+    <content contentuid="hff06e0a0dd354845a476ade3119ad6cc1gc7" version="1">Bad Relations</content>
+    <content contentuid="h720138ca9bba43afaf4fc04bbda5ef2e473d" version="1">Bad Relations Description.</content>
 </contentList>

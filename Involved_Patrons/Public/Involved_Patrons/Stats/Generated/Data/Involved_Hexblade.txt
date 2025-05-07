@@ -1,5 +1,7 @@
 // Progression
 
+    // Quest handling
+
 new entry "InvolvedHexbladePatron"
 type "PassiveData"
 data "DisplayName" "h8a8be88bgc57fg4cbegbdf5g6a9da982e8c9;1"
@@ -8,6 +10,14 @@ data "Icon" "PassiveFeature_ExpertDivination"
 data "Properties" "Highlighted"
 data "StatsFunctorContext" "OnShortRest;OnLongRest;OnCreate"
 data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
+
+    // Favor handling - Work in Progress
+
+new entry "InvolvedFiendPatronFavor"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnStatusApplied"
+data "StatsFunctors" "IF(not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 5)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_BOON,100,-1)"
 
 // Quests
 
@@ -136,6 +146,27 @@ data "Icon" "PassiveFeature_ExpertDivination"
 data "Boosts" "Reroll(Damage,20,false)"
 data "StackId" "BOON_UNIQUE"
 data "StatusGroups" "SG_RemoveOnRespec"
+
+// Favor Boon and Penalty - Work in Progress
+
+new entry "INVOLVED_HEXBLADE_PATRON_FAVOR_BOON"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "he8255fd40760458fa2d3a5a8db798f7931c5;1"
+data "Description" "h0a9ccc3f804b4a068713752f54b391901c8a;1"
+data "Icon" "PassiveFeature_ExpertDivination"
+data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):ActionResource(WarlockSpellSlot,1,1);IF(HasPassive('UnlockedWarlockSpellSlotLevel2', context.Source)):ActionResource(WarlockSpellSlot,1,2);IF(HasPassive('UnlockedWarlockSpellSlotLevel3', context.Source)):ActionResource(WarlockSpellSlot,1,3);IF(HasPassive('UnlockedWarlockSpellSlotLevel4', context.Source)):ActionResource(WarlockSpellSlot,1,4);IF(HasPassive('UnlockedWarlockSpellSlotLevel5', context.Source)):ActionResource(WarlockSpellSlot,1,5)"
+data "StatusGroups" "SG_RemoveOnRespec"
+// data "StatusPropertyFlags" "IgnoreResting;ApplyToDead"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead" // Hidden until finished
+
+new entry "INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOLVED_HEXBLADE_PATRON_FAVOR_BOON"
+data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
+data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
+data "Boosts" ""
 
 // Technical
 
