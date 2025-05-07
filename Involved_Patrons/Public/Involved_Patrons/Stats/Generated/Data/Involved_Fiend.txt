@@ -125,6 +125,7 @@ data "DescriptionParams" "DealDamage(1d4,Fire)"
 data "Icon" "Spell_Transmutation_MagicWeapon"
 data "Boosts" "CharacterWeaponDamage(1d4,Fire)"
 data "StackId" "BOON_WEAPON"
+data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 
     // Tier 3 - Rarest
@@ -137,6 +138,7 @@ data "Description" "h6c984c10a4184662b85d709c1bcf243c1f0e;1"
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Boosts" "Reroll(Damage,20,false)"
 data "StackId" "BOON_UNIQUE"
+data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 
 // Favor Boon and Penalty - Work in Progress
@@ -148,6 +150,8 @@ data "DisplayName" "he8255fd40760458fa2d3a5a8db798f7931c5;1"
 data "Description" "h0a9ccc3f804b4a068713752f54b391901c8a;1"
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):ActionResource(WarlockSpellSlot,1,1);IF(HasPassive('UnlockedWarlockSpellSlotLevel2', context.Source)):ActionResource(WarlockSpellSlot,1,2);IF(HasPassive('UnlockedWarlockSpellSlotLevel3', context.Source)):ActionResource(WarlockSpellSlot,1,3);IF(HasPassive('UnlockedWarlockSpellSlotLevel4', context.Source)):ActionResource(WarlockSpellSlot,1,4);IF(HasPassive('UnlockedWarlockSpellSlotLevel5', context.Source)):ActionResource(WarlockSpellSlot,1,5)"
+data "StackId" "PATRON_FAVOR_BOON"
+data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 // data "StatusPropertyFlags" "IgnoreResting;ApplyToDead"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead" // Hidden until finished
@@ -159,6 +163,7 @@ using "INVOLVED_FIEND_PATRON_FAVOR_BOON"
 data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
 data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
 data "Boosts" ""
+data "StackId" "PATRON_FAVOR_PENALTY"
 
 // Technical
 

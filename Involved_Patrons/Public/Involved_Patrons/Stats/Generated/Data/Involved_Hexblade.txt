@@ -133,6 +133,7 @@ data "DescriptionParams" "DealDamage(LevelMapValue(HexbladeWeaponBoon), Necrotic
 data "Icon" "Spell_Transmutation_MagicWeapon"
 data "Boosts" "CharacterWeaponDamage(LevelMapValue(HexbladeWeaponBoon), Necrotic)"
 data "StackId" "BOON_WEAPON"
+data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 
     // Tier 3 - Rarest
@@ -145,6 +146,7 @@ data "Description" "hde11771e5ce94d13ah7f6f57f11c954ef1ad5e8f9286a89260422a75f32
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Passives" "ThirstingHexblade_Blade"
 data "StackId" "BOON_UNIQUE"
+data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 
 // Favor Boon and Penalty - Work in Progress
@@ -159,6 +161,8 @@ data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):
 data "StatusGroups" "SG_RemoveOnRespec"
 // data "StatusPropertyFlags" "IgnoreResting;ApplyToDead"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead" // Hidden until finished
+data "StackId" "PATRON_FAVOR_BOON"
+data "StackType" "Ignore"
 
 new entry "INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY"
 type "StatusData"
@@ -167,6 +171,7 @@ using "INVOLVED_HEXBLADE_PATRON_FAVOR_BOON"
 data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
 data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
 data "Boosts" ""
+data "StackId" "PATRON_FAVOR_PENALTY"
 
 // Technical
 
