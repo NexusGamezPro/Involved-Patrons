@@ -154,7 +154,7 @@ data "StackId" "PATRON_FAVOR_BOON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 // data "StatusPropertyFlags" "IgnoreResting;ApplyToDead"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead" // Hidden until finished
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead"
 
 new entry "INVOLVED_FIEND_PATRON_FAVOR_PENALTY"
 type "StatusData"
