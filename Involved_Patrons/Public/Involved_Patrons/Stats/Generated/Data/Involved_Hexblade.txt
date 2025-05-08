@@ -17,7 +17,7 @@ new entry "InvolvedHexbladePatronFavor"
 type "PassiveData"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnStatusApplied"
-data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 5)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_BOON,100,-1)"
+data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) == 5)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_BOON,100,-1)"
 
 // Quests
 
