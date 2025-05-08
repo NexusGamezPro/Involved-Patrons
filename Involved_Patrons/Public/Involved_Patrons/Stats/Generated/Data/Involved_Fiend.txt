@@ -44,6 +44,7 @@ data "StackId" "PATRON_QUEST"
 data "StackType" "Overwrite"
 data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
 data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "DisableOverhead"
 
         // Quest 2
 
@@ -127,7 +128,7 @@ data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_FIEND_PATRON_BOON_WEAPON_STATUS,100,-1)"
-data "StatusPropertyFlags" "DisableOverhead"
+data "StatusPropertyFlags" "DisablePortraitIndicator"
 
     // Tier 3 - Rarest
 
