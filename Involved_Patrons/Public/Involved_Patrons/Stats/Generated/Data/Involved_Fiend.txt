@@ -127,6 +127,11 @@ data "Boosts" "CharacterWeaponDamage(1d4,Fire)"
 data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
+data "SoundLoop" "Misc_Status_Burning_MO"
+data "SoundStop" "Misc_Status_Burning_MO_Stop"
+data "OnApplyFunctors" "IF(not HasStatus('MAG_SPELLBLADE_FIRE_ENERGY_APPLIED_VFX')):ApplyStatus(MAG_SPELLBLADE_FIRE_ENERGY_APPLIED_VFX, 100, -1)"
+data "OnRemoveFunctors" "RemoveStatus(MAG_SPELLBLADE_FIRE_ENERGY_APPLIED_VFX)"
+data "StatusEffect" "d9d254b2-3771-482e-990b-a74d546e0d4e"
 
     // Tier 3 - Rarest
 
