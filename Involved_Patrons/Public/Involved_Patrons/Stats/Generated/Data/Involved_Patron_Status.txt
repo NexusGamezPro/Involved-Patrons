@@ -20,3 +20,18 @@ data "RemoveConditions" "not HasHigherPriorityExtraAttackQueuedHexblade('EXTRA_A
 data "RemoveEvents" "OnStatusRemoved"
 data "StatusPropertyFlags" "DisableCombatlog;DisableOverhead;DisablePortraitIndicator;ApplyToDead"
 data "OnRemoveFunctors" "IF(RemoveCause(StatusRemoveCause.Condition)):ApplyStatus(EXTRA_ATTACK_HEXBLADE, 100, 1)"
+
+// Weapon Boons
+
+new entry "INVOLVED_FIEND_PATRON_BOON_WEAPON_STATUS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
+data "Description" "h65909a266f8e470796dd3026d19d0b0fed47;5"
+data "DescriptionParams" "1;DealDamage(1d4,Fire)"
+data "Icon" "Spell_Transmutation_MagicWeapon"
+data "StackId" "BOON_WEAPON"
+data "Boosts" "WeaponAttackRollBonus(1);WeaponDamage(1d4,Fire);"
+data "StatusPropertyFlags" "RemoveOnLongRest"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusEffect" "8a4c7e6e-a629-4765-9c5d-d354838703d8"
