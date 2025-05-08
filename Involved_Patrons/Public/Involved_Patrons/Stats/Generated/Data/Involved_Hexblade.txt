@@ -69,7 +69,7 @@ new entry "InvolvedHexbladePatronQuestRelease"
 type "PassiveData"
 using "InvolvedHexbladePatronQuestDamageNecrotic"
 data "StatsFunctorContext" "OnCast"
-data "Conditions" "Enemy(context.Target) and HasStatus('HEXBLADES_CURSE') and IsKillingBlow()"
+data "Conditions" "Enemy(context.Target) and HasStatus('HEXBLADES_CURSE',context.Target) and IsKillingBlow()"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE)"
 
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE"
