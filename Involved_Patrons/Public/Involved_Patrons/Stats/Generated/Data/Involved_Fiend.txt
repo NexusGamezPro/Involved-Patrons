@@ -121,13 +121,13 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
 data "Description" "h65909a266f8e470796dd3026d19d0b0fed47;1"
-data "DescriptionParams" "DealDamage(1d4,Fire)"
+data "DescriptionParams" "1;DealDamage(1d4,Fire)"
 data "Icon" "Spell_Transmutation_MagicWeapon"
 data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_FIEND_PATRON_BOON_WEAPON_STATUS,100,-1)"
-data "StatusPropertyFlags" "DisablePortraitIndicator"
+data "StatusPropertyFlags" "DisableOverhead"
 
     // Tier 3 - Rarest
 

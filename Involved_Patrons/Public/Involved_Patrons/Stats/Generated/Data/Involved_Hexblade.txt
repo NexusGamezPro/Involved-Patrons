@@ -129,12 +129,13 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
 data "Description" "h65909a266f8e470796dd3026d19d0b0fed47;1"
-data "DescriptionParams" "DealDamage(LevelMapValue(HexbladeWeaponBoon), Necrotic)"
+data "DescriptionParams" "1;DealDamage(LevelMapValue(HexbladeWeaponBoon), Necrotic)"
 data "Icon" "Spell_Transmutation_MagicWeapon"
-data "Boosts" "CharacterWeaponDamage(LevelMapValue(HexbladeWeaponBoon), Necrotic)"
 data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
+data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_HEXBLADE_PATRON_BOON_WEAPON_STATUS,100,-1)"
+data "StatusPropertyFlags" "DisableOverhead"
 
     // Tier 3 - Rarest
 
