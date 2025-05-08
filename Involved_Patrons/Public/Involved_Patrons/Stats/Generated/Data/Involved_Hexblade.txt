@@ -17,7 +17,7 @@ new entry "InvolvedHexbladePatronFavor"
 type "PassiveData"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnStatusApplied"
-data "StatsFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 5)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_BOON,100,-1)"
+data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 5)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_BOON,100,-1)"
 
 // Quests
 
@@ -161,6 +161,8 @@ data "Icon" "PassiveFeature_ExpertDivination"
 data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):ActionResource(WarlockSpellSlot,1,1);IF(HasPassive('UnlockedWarlockSpellSlotLevel2', context.Source)):ActionResource(WarlockSpellSlot,1,2);IF(HasPassive('UnlockedWarlockSpellSlotLevel3', context.Source)):ActionResource(WarlockSpellSlot,1,3);IF(HasPassive('UnlockedWarlockSpellSlotLevel4', context.Source)):ActionResource(WarlockSpellSlot,1,4);IF(HasPassive('UnlockedWarlockSpellSlotLevel5', context.Source)):ActionResource(WarlockSpellSlot,1,5)"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead"
+data "RemoveEvents" "OnStatusApplied"
+data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 15)"
 data "StackId" "PATRON_FAVOR_BOON"
 data "StackType" "Ignore"
 
@@ -171,6 +173,7 @@ using "INVOLVED_HEXBLADE_PATRON_FAVOR_BOON"
 data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
 data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
 data "Boosts" ""
+data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 2)"
 data "StackId" "PATRON_FAVOR_PENALTY"
 
 // Technical
