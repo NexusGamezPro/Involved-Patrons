@@ -9,7 +9,7 @@ data "Description" "h9a30d1dag9929g43b6g8764g610e3fa2148d;1"
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Properties" "Highlighted"
 data "StatsFunctorContext" "OnShortRest;OnLongRest;OnCreate"
-data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST,100,4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
 
     // Favor handling - Work in Progress
 
@@ -89,7 +89,6 @@ using "InvolvedHexbladePatronQuestDamageNecrotic"
 data "StatsFunctorContext" "OnAttack;OnStatusApplied"
 data "Conditions" ""
 data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnAttack) and HasStatus('HEXBLADE_BIND', GetAttackWeapon(context.Source)) and Enemy(context.Target) and IsWeaponAttack() and IsKillingBlow()):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER,100,1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER',context.Source) >= 2)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d4);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER)"
-data "Properties" "IsHidden"
 
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_KILL"
 type "StatusData"
@@ -104,7 +103,7 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "StackId" "INVOLVED_PATRON_KILL_TRACKER"
 data "StackType" "Additive"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;FreezeDuration;ApplyToDead"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;FreezeDuration;ApplyToDead"
 
 // Quest Boons
 
@@ -162,7 +161,7 @@ data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead"
 data "RemoveEvents" "OnStatusApplied"
-data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 14)"
+data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') <= 14)"
 data "StackId" "PATRON_FAVOR_BOON"
 data "StackType" "Ignore"
 
@@ -173,7 +172,7 @@ using "INVOLVED_HEXBLADE_PATRON_FAVOR_BOON"
 data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
 data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
 data "Boosts" ""
-data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 2)"
+data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') >= 2)"
 data "StackId" "PATRON_FAVOR_PENALTY"
 
 // Technical
