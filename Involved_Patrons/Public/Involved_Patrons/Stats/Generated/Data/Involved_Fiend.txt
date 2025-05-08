@@ -17,7 +17,7 @@ new entry "InvolvedFiendPatronFavor"
 type "PassiveData"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnStatusApplied"
-data "StatsFunctors" "IF(not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_FAVOR_PENALTY,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 5)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_FAVOR_BOON,100,-1)"
+data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_FAVOR_PENALTY,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 5)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_FAVOR_BOON,100,-1)"
 
 // Quests
 
@@ -155,6 +155,8 @@ data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 // data "StatusPropertyFlags" "IgnoreResting;ApplyToDead"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead"
+data "RemoveEvents" "OnStatusApplied"
+data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 15)"
 
 new entry "INVOLVED_FIEND_PATRON_FAVOR_PENALTY"
 type "StatusData"
@@ -164,6 +166,8 @@ data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
 data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
 data "Boosts" ""
 data "StackId" "PATRON_FAVOR_PENALTY"
+data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 2)"
+
 
 // Technical
 
