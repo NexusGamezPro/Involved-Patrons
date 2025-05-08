@@ -17,7 +17,18 @@ data "StackId" "PATRON_FAVOR_WARNING"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 // data "StatusPropertyFlags" "ApplyToDead"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;ApplyToDead"
+data "OnApplyFunctors" "ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER_WARNING_APPLIED,100,-1)"
+
+new entry "INVOLVED_PATRON_FAVOR_TRACKER_WARNING_APPLIED"
+type "StatusData"
+data "StatusType" "BOOST"
+data "StackId" "PATRON_FAVOR_WARNING_APPLIED"
+data "StackType" "Ignore"
+data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead"
+data "RemoveEvents" "OnStatusApplied"
+data "RemoveConditions" "ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) == 5)"
 
 // Spellslot Progression Tracking
 
