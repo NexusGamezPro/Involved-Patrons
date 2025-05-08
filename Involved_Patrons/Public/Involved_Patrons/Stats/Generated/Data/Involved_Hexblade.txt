@@ -161,7 +161,7 @@ data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead"
 data "RemoveEvents" "OnStatusApplied"
-data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') <= 14)"
+data "RemoveConditions" "ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') == 14)"
 data "StackId" "PATRON_FAVOR_BOON"
 data "StackType" "Ignore"
 
@@ -172,7 +172,7 @@ using "INVOLVED_HEXBLADE_PATRON_FAVOR_BOON"
 data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
 data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
 data "Boosts" ""
-data "RemoveConditions" "HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') >= 2)"
+data "RemoveConditions" "ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') == 2)"
 data "StackId" "PATRON_FAVOR_PENALTY"
 
 // Technical
