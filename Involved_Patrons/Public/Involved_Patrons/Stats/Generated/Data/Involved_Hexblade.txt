@@ -9,7 +9,7 @@ data "Description" "h9a30d1dag9929g43b6g8764g610e3fa2148d;1"
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Properties" "Highlighted"
 data "StatsFunctorContext" "OnShortRest;OnLongRest;OnCreate"
-data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST,100,2);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST,100,4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
 
     // Favor handling - Work in Progress
 
@@ -68,8 +68,8 @@ data "Passives" "InvolvedHexbladePatronQuestEvocation"
 new entry "InvolvedHexbladePatronQuestRelease"
 type "PassiveData"
 using "InvolvedHexbladePatronQuestDamageNecrotic"
-data "StatsFunctorContext" "OnCast"
-data "Conditions" "Enemy(context.Target) and HasStatus('HEXBLADES_CURSE',context.Target) and IsKillingBlow()"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "Enemy(context.Target) and IsKillingBlow() and HasStatus('HEXBLADES_CURSE',context.Target)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE)"
 
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE"
@@ -88,7 +88,7 @@ type "PassiveData"
 using "InvolvedHexbladePatronQuestDamageNecrotic"
 data "StatsFunctorContext" "OnCast;OnStatusApplied"
 data "Conditions" ""
-data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnCast) and Enemy(context.Target) and IsKillingBlow() and (HasPactWeapon(context.Source) or HasHexbladeWeapon(context.Source))):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER,100,1);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_KILL_TRACKER',context.Target) >= 2)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_KILL_TRACKER',context.Target) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL)"
+data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnCast) and Enemy(context.Target) and IsKillingBlow() and HasHexbladeWeapon(context.Source)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER,100,1);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_KILL_TRACKER',context.Target) >= 2)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_KILL_TRACKER',context.Target) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL)"
 data "Properties" "IsHidden;OncePerAttack"
 
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_KILL"
