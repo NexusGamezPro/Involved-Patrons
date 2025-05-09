@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<contentList>
-	<content contentuid="h9a30d1dag9929g43b6g8764g610e3fa2148d" version="1">Your Patron may Task you with a Quest on a &lt;LSTag Tooltip="ShortRest"&gt;short&lt;/LSTag&gt; or &lt;LSTag Tooltip="LongRest"&gt;Long Rest&lt;/LSTag&gt;. If you fulfill it, you will be rewarded.</content>
-    <content contentuid="h5a172fca4e1e49f1bb1b331c0eaa9820df1f" version="1">Show Obedience</content>
-    <content contentuid="h851e549d85444d7b82fc10a461f669ce25ab" version="1">Show your Obedience to your Patron and reduce your maximum HP by [1]% until the next long Rest.</content>
-    <content contentuid="h184dd1b4b6cc4d7a9ac3968deac3455be5f0" version="1">Obedient</content>
-    <content contentuid="h61b7c4a408fa4ed6bbdb88cb37f6a71109b0" version="1">You have shown your Patron your Obedience by sacrificing [1] of your Max HP until the next long Rest.</content>
-</contentList>

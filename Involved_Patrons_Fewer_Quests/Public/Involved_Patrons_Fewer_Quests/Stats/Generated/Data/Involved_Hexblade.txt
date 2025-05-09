@@ -1,8 +1,0 @@
-// Progression
-
-    // Quest handling
-
-new entry "InvolvedHexbladePatron"
-type "PassiveData"
-using "InvolvedHexbladePatron"
-data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST,100,1d8);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
