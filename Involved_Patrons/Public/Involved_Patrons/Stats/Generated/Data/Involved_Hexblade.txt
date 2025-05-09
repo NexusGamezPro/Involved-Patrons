@@ -186,11 +186,13 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "OnApplyFunctors" "ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_TECHNICAL,100,0)"
 data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+data "StackId" "PATRON_QUEST"
+data "StackType" "Overwrite"
 
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_TECHNICAL"
 type "StatusData"
 data "StatusType" "BOOST"
-data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 1)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 2)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 3)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 4)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_KILL,100,-1);RemoveStatus(INVOLVED_HEXBLADE_PATRON_QUEST)"
+data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 1)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 2)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 3)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 4)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_KILL,100,-1)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
     // Reward handling
