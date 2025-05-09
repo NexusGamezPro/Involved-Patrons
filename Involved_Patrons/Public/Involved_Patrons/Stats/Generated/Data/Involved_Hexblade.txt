@@ -186,8 +186,10 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "OnApplyFunctors" "ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_TECHNICAL,100,0)"
 data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
-data "StackId" "PATRON_QUEST"
 data "StackType" "Overwrite"
+data "RemoveEvents" "OnStatusApplied"
+data "RemoveConditions" "HasAnyStatus({'INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC','INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION','INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE';'INVOLVED_HEXBLADE_PATRON_QUEST_KILL'})"
+
 
 new entry "INVOLVED_HEXBLADE_PATRON_QUEST_TECHNICAL"
 type "StatusData"
