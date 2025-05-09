@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <contentList>
 	<content contentuid="h8a8be88bgc57fg4cbegbdf5g6a9da982e8c9" version="1">Involved Patron</content>
-	<content contentuid="h9a30d1dag9929g43b6g8764g610e3fa2148d" version="1">Your Patron Tasks you with a Quest on every &lt;LSTag Tooltip="ShortRest"&gt;short&lt;/LSTag&gt; or &lt;LSTag Tooltip="LongRest"&gt;Long Rest&lt;/LSTag&gt;. If you fulfill it, you will be rewarded.</content>
+	<content contentuid="h9a30d1dag9929g43b6g8764g610e3fa2148d" version="1">Your Patron Tasks you with a Quest on every &lt;LSTag Tooltip="ShortRest"&gt;short&lt;/LSTag&gt; or &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;. If you fulfill it, you will be rewarded.</content>
 	<content contentuid="h031dd24cf14d49b58ce7fb99934881956d01" version="1">Patron's Infused Weapon</content>
 	<content contentuid="h65909a266f8e470796dd3026d19d0b0fed47" version="1">Your Weapon is infused with your Patrons Power. It has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and deals an additional [2].</content>
 	<content contentuid="hea1b5aefb82a4f41a15a511cb5cd44665673" version="1">Patron's Demand</content>
@@ -23,4 +23,8 @@
     <content contentuid="h720138ca9bba43afaf4fc04bbda5ef2e473d" version="1">Bad Relations Description.</content>
     <content contentuid="hde11771e5ce94d13a75f327ea4c6cac28747" version="1">Hexblade's Thirst</content>
     <content contentuid="h7f6f57f11c954ef1ad5e8f9286a89260422a" version="1">You gain an &lt;LSTag Type="Passive" Tooltip="ExtraAttack"&gt;extra attack&lt;/LSTag&gt; with your &lt;LSTag Type="Spell" Tooltip="Shout_Hexblade_Bind&gt;Hexed Weapon&lt;/LSTag&gt;.</content>
+    <content contentuid="h5a172fca4e1e49f1bb1b331c0eaa9820df1f" version="1">Show Obedience</content>
+    <content contentuid="h851e549d85444d7b82fc10a461f669ce25ab" version="1">Show your Obedience to your Patron and reduce your maximum HP by [1]% until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
+    <content contentuid="h184dd1b4b6cc4d7a9ac3968deac3455be5f0" version="1">Obedient</content>
+    <content contentuid="h61b7c4a408fa4ed6bbdb88cb37f6a71109b0" version="1">You have shown your Patron your Obedience by sacrificing [1] of your Max HP until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
 </contentList>
