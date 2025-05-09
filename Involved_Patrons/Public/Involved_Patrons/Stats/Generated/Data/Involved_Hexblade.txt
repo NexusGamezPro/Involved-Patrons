@@ -1,6 +1,6 @@
 // Progression
 
-    // Quest handling
+    // Demand handling
 
 new entry "InvolvedHexbladePatron"
 type "PassiveData"
@@ -9,7 +9,7 @@ data "Description" "h9a30d1dag9929g43b6g8764g610e3fa2148d;1"
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Properties" "Highlighted"
 data "StatsFunctorContext" "OnShortRest;OnLongRest;OnCreate"
-data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_DEMAND,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
 
     // Favor handling - Work in Progress
 
@@ -19,94 +19,94 @@ data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnStatusApplied"
 data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_PENALTY,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) == 3)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER') and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_FAVOR_BOON,100,-1)"
 
-// Quests
+// Demands
 
     // Tier 1 - Normal Reward Chances, 1d8
 
-        // Quest 1 - Base
+        // Demand 1 - Base - Necrotic Damage
 
-new entry "InvolvedHexbladePatronQuestDamageNecrotic"
+new entry "InvolvedHexbladePatronDemand_1"
 type "PassiveData"
 data "StatsFunctorContext" "OnDamage"
 data "Conditions" "IsDamageTypeNecrotic(context.Target) and Enemy(context.Target)"
-data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_DEMAND_1)"
 data "Properties" "IsHidden"
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
+new entry "INVOLVED_HEXBLADE_PATRON_DEMAND_1"
 type "StatusData"
 data "StatusType" "BOOST"
 data "DisplayName" "hea1b5aefb82a4f41a15a511cb5cd44665673;1"
 data "Description" "h0adb828cgff0fg4427g84dageedcc08878c5;1"
 data "DescriptionParams" "DealDamage(1,Necrotic)"
 data "Icon" "PassiveFeature_ExpertDivination"
-data "Passives" "InvolvedHexbladePatronQuestDamageNecrotic"
-data "StackId" "PATRON_QUEST"
+data "Passives" "InvolvedHexbladePatronDemand_1"
+data "StackId" "PATRON_DEMAND"
 data "StackType" "Overwrite"
 data "OnRemoveFunctors" "IF(Party() and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 2)):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead"
 
-        // Quest 2
+        // Demand 2 - Evocation
 
-new entry "InvolvedHexbladePatronQuestEvocation"
+new entry "InvolvedHexbladePatronDemand_2"
 type "PassiveData"
-using "InvolvedHexbladePatronQuestDamageNecrotic"
+using "InvolvedHexbladePatronDemand_1"
 data "StatsFunctorContext" "OnCast"
 data "Conditions" "IsSpell() and IsSpellSchool(SpellSchool.Evocation)"
-data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_DEMAND_2)"
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION"
+new entry "INVOLVED_HEXBLADE_PATRON_DEMAND_2"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
+using "INVOLVED_HEXBLADE_PATRON_DEMAND_1"
 data "Description" "h6701b9ceg5045g481agb49ag8da75d8ef611;1"
-data "Passives" "InvolvedHexbladePatronQuestEvocation"
+data "Passives" "InvolvedHexbladePatronDemand_2"
 
     // Tier 2 - Higher Chance for better Rewards, 1d6
 
-        // Quest 3
+        // Demand 3 - Release
 
-new entry "InvolvedHexbladePatronQuestRelease"
+new entry "InvolvedHexbladePatronDemand_3"
 type "PassiveData"
-using "InvolvedHexbladePatronQuestDamageNecrotic"
+using "InvolvedHexbladePatronDemand_1"
 data "StatsFunctorContext" "OnAttack"
 data "Conditions" "Enemy(context.Target) and IsKillingBlow() and HasStatus('HEXBLADES_CURSE',context.Target)"
-data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_DEMAND_3)"
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE"
+new entry "INVOLVED_HEXBLADE_PATRON_DEMAND_3"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
+using "INVOLVED_HEXBLADE_PATRON_DEMAND_1"
 data "Description" "he8b2830732fa4e17a16afe57aedae5900787;1"
-data "Passives" "InvolvedHexbladePatronQuestRelease"
+data "Passives" "InvolvedHexbladePatronDemand_3"
 
     // Tier 3 - Highest Chance for better Rewards, 1d4
 
-        // Quest 4
+        // Demand 4
 
-new entry "InvolvedHexbladePatronQuestKill"
+new entry "InvolvedHexbladePatronDemand_4"
 type "PassiveData"
-using "InvolvedHexbladePatronQuestDamageNecrotic"
+using "InvolvedHexbladePatronDemand_1"
 data "StatsFunctorContext" "OnAttack;OnStatusApplied"
 data "Conditions" ""
-data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnAttack) and HasStatus('HEXBLADE_BIND', GetAttackWeapon(context.Source)) and Enemy(context.Target) and IsWeaponAttack() and IsKillingBlow()):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER,100,1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER',context.Source) >= 2)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d4);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER)"
+data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnAttack) and HasStatus('HEXBLADE_BIND', GetAttackWeapon(context.Source)) and Enemy(context.Target) and IsWeaponAttack() and IsKillingBlow()):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_DEMAND_4_TRACKER,100,1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_DEMAND_4_TRACKER',context.Source) >= 2)):ApplyStatus(SELF,INVOLVED_HEXBLADE_PATRON_REWARD,100,1d4);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_DEMAND_4_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_DEMAND_4);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_DEMAND_4_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_HEXBLADE_PATRON_DEMAND_4_TRACKER)"
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST_KILL"
+new entry "INVOLVED_HEXBLADE_PATRON_DEMAND_4"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC"
+using "INVOLVED_HEXBLADE_PATRON_DEMAND_1"
 data "Description" "h48b605c4ecf24182b42fae4bc9be5d3a1362;1"
 data "DescriptionParams" "2"
-data "Passives" "InvolvedHexbladePatronQuestKill"
+data "Passives" "InvolvedHexbladePatronDemand_4"
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST_KILL_TRACKER"
+new entry "INVOLVED_HEXBLADE_PATRON_DEMAND_4_TRACKER"
 type "StatusData"
 data "StatusType" "BOOST"
 data "StackId" "INVOLVED_PATRON_KILL_TRACKER"
 data "StackType" "Additive"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;FreezeDuration;ApplyToDead"
 
-// Quest Boons
+// Demand Boons
 
     // Tier 1 - Common
 
@@ -117,7 +117,7 @@ data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):
 data "StackId" "BOON_SPELLSLOT"
 data "StackType" "Ignore"
 data "RemoveEvents" "OnStatusApplied"
-data "RemoveConditions" "HasStatus('INVOLVED_HEXBLADE_PATRON_QUEST',context.Source)"
+data "RemoveConditions" "HasStatus('INVOLVED_HEXBLADE_PATRON_DEMAND',context.Source)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "SoundStart" "Spell_Passive_Impact_Damage_DarkOnesBlessing_L1to3"
@@ -179,22 +179,22 @@ data "StackId" "PATRON_FAVOR_PENALTY"
 
 // Technical
 
-    // Quest handling
+    // Demand handling
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST"
+new entry "INVOLVED_HEXBLADE_PATRON_DEMAND"
 type "StatusData"
 data "StatusType" "BOOST"
-data "OnApplyFunctors" "ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_TECHNICAL,100,0)"
+data "OnApplyFunctors" "ApplyStatus(INVOLVED_HEXBLADE_PATRON_DEMAND_TECHNICAL,100,0)"
 data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 data "StackType" "Overwrite"
 data "RemoveEvents" "OnStatusApplied"
-data "RemoveConditions" "HasAnyStatus({'INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC','INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION','INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE';'INVOLVED_HEXBLADE_PATRON_QUEST_KILL'})"
+data "RemoveConditions" "HasAnyStatus({'INVOLVED_HEXBLADE_PATRON_DEMAND_1','INVOLVED_HEXBLADE_PATRON_DEMAND_2','INVOLVED_HEXBLADE_PATRON_DEMAND_3';'INVOLVED_HEXBLADE_PATRON_DEMAND_4'})"
 
 
-new entry "INVOLVED_HEXBLADE_PATRON_QUEST_TECHNICAL"
+new entry "INVOLVED_HEXBLADE_PATRON_DEMAND_TECHNICAL"
 type "StatusData"
 data "StatusType" "BOOST"
-data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 1)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_DAMAGE_NECROTIC,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 2)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_EVOCATION,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 3)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_RELEASE,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_QUEST',context.Target) == 4)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_QUEST_KILL,100,-1)"
+data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_DEMAND',context.Target) == 1)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_DEMAND_1,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_DEMAND',context.Target) == 2)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_DEMAND_2,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_DEMAND',context.Target) == 3)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_DEMAND_3,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_HEXBLADE_PATRON_DEMAND',context.Target) == 4)):ApplyStatus(INVOLVED_HEXBLADE_PATRON_DEMAND_4,100,-1)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
     // Reward handling
