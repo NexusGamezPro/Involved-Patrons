@@ -82,7 +82,7 @@ data "Passives" "InvolvedHexbladePatronDemand_3"
 
     // Tier 3 - Highest Chance for better Rewards, 1d4
 
-        // Demand 4
+        // Demand 4 - Kill
 
 new entry "InvolvedHexbladePatronDemand_4"
 type "PassiveData"
