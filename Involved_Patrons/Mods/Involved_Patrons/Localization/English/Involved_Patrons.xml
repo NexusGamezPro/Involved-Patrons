@@ -10,7 +10,7 @@
 	<content contentuid="h0adb828cgff0fg4427g84dageedcc08878c5" version="1">Deal at least [1] to an enemy to gain the favor of your Patron.</content>
 	<content contentuid="h6701b9ceg5045g481agb49ag8da75d8ef611" version="1">Use a Evocation Spell or Cantrip to gain the favor of your Patron.</content>
 	<content contentuid="h49da94e8cfd847899dd241bdce212dba8ga9" version="1">Kill an Enemy with a Spell to gain the favor of your Patron.</content>
-	<content contentuid="hc5ad94aag2c9dg429bga494ge7ce0d76f93b" version="1">Your Patron demands proof of your obedience, reduce your health to half or below.</content>
+	<content contentuid="hc5ad94aag2c9dg429bga494ge7ce0d76f93b" version="1">Your Patron demands proof of your obedience, show it by &lt;LSTag Type="Spell" Tooltip="Shout_InvolvedFiendShowObedience"&gt;sacrificing a part your Life Force&lt;/LSTag&gt;.</content>
 	<content contentuid="h95773471gefe4g4b78gbffdg3826c4a19617" version="1">Fiend's Advantage</content>
 	<content contentuid="h6c984c10a4184662b85d709c1bcf243c1f0e" version="1">Roll all your Damage with Advantage.</content>
     <content contentuid="h48b605c4ecf24182b42fae4bc9be5d3a1362" version="1">Kill [1] Enemies with your &lt;LSTag Type="Spell" Tooltip="Shout_Hexblade_Bind&gt;Hexed Weapon&lt;/LSTag&gt; to gain the favor of your Patron.</content>
@@ -26,5 +26,5 @@
     <content contentuid="h5a172fca4e1e49f1bb1b331c0eaa9820df1f" version="1">Show Obedience</content>
     <content contentuid="h851e549d85444d7b82fc10a461f669ce25ab" version="1">Show your Obedience to your Patron and reduce your maximum HP by [1]% until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
     <content contentuid="h184dd1b4b6cc4d7a9ac3968deac3455be5f0" version="1">Obedient</content>
-    <content contentuid="h61b7c4a408fa4ed6bbdb88cb37f6a71109b0" version="1">You have shown your Patron your Obedience by sacrificing [1] of your Max HP until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
+    <content contentuid="h61b7c4a408fa4ed6bbdb88cb37f6a71109b0" version="1">You have shown your Patron your Obedience by sacrificing [1]% of your maximum HP until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
 </contentList>
