@@ -1,6 +1,6 @@
 // Progression
 
-    // Quest handling
+    // Demand handling
 
 new entry "InvolvedFiendPatron"
 type "PassiveData"
@@ -9,7 +9,7 @@ data "Description" "h9a30d1dag9929g43b6g8764g610e3fa2148d;1"
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Properties" "Highlighted"
 data "StatsFunctorContext" "OnShortRest;OnLongRest;OnCreate"
-data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_QUEST,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_DEMAND,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
 
     // Favor handling - Work in Progress
 
@@ -19,87 +19,87 @@ data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnStatusApplied"
 data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_FAVOR_PENALTY,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) == 3)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_FAVOR_BOON,100,-1)"
 
-// Quests
+// Demands
 
     // Tier 1 - Normal Reward Chances, 1d8
 
-        // Quest 1 - Base
+        // Demand 1 - Base - Fire Damage
 
-new entry "InvolvedFiendPatronQuestDamageFire"
+new entry "InvolvedFiendPatronDemand_1"
 type "PassiveData"
 data "StatsFunctorContext" "OnDamage"
 data "Conditions" "IsDamageTypeFire(context.Target) and Enemy(context.Target)"
-data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_DEMAND_1)"
 data "Properties" "IsHidden"
 
-new entry "INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE"
+new entry "INVOLVED_FIEND_PATRON_DEMAND_1"
 type "StatusData"
 data "StatusType" "BOOST"
 data "DisplayName" "hea1b5aefb82a4f41a15a511cb5cd44665673;1"
 data "Description" "h0adb828cgff0fg4427g84dageedcc08878c5;1"
 data "DescriptionParams" "DealDamage(1,Fire)"
 data "Icon" "PassiveFeature_ExpertDivination"
-data "Passives" "InvolvedFiendPatronQuestDamageFire"
-data "StackId" "PATRON_QUEST"
+data "Passives" "InvolvedFiendPatronDemand_1"
+data "StackId" "PATRON_DEMAND"
 data "StackType" "Overwrite"
 data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
 
-        // Quest 2
+        // Demand 2 - Evocation
 
-new entry "InvolvedFiendPatronQuestEvocation"
+new entry "InvolvedFiendPatronDemand_2"
 type "PassiveData"
-using "InvolvedFiendPatronQuestDamageFire"
+using "InvolvedFiendPatronDemand_1"
 data "StatsFunctorContext" "OnCast"
 data "Conditions" "IsSpell() and IsSpellSchool(SpellSchool.Evocation)"
-data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_QUEST_EVOCATION)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_DEMAND_2)"
 
-new entry "INVOLVED_FIEND_PATRON_QUEST_EVOCATION"
+new entry "INVOLVED_FIEND_PATRON_DEMAND_2"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE"
+using "INVOLVED_FIEND_PATRON_DEMAND_1"
 data "Description" "h6701b9ceg5045g481agb49ag8da75d8ef611;1"
-data "Passives" "InvolvedFiendPatronQuestEvocation"
+data "Passives" "InvolvedFiendPatronDemand_2"
 
     // Tier 2 - Higher Chance for better Rewards, 1d6
 
-        // Quest 3
+        // Demand 3 - Obliterate
 
-new entry "InvolvedFiendPatronQuestObliterate"
+new entry "InvolvedFiendPatronDemand_3"
 type "PassiveData"
-using "InvolvedFiendPatronQuestDamageFire"
+using "InvolvedFiendPatronDemand_1"
 data "StatsFunctorContext" "OnCast"
 data "Conditions" "Enemy(context.Target) and IsSpell() and IsKillingBlow()"
-data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_QUEST_OBLITERATE)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_DEMAND_3)"
 
-new entry "INVOLVED_FIEND_PATRON_QUEST_OBLITERATE"
+new entry "INVOLVED_FIEND_PATRON_DEMAND_3"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE"
+using "INVOLVED_FIEND_PATRON_DEMAND_1"
 data "Description" "h49da94e8cfd847899dd241bdce212dba8ga9;1"
-data "Passives" "InvolvedFiendPatronQuestObliterate"
+data "Passives" "InvolvedFiendPatronDemand_3"
 
     // Tier 3 - Highest Chance for better Rewards, 1d4
 
-        // Quest 4
+        // Demand 4 - Suffer
 
-new entry "InvolvedFiendPatronQuestSuffer"
+new entry "InvolvedFiendPatronDemand_4"
 type "PassiveData"
-using "InvolvedFiendPatronQuestDamageFire"
+using "InvolvedFiendPatronDemand_1"
 data "StatsFunctorContext" "OnStatusApplied"
 data "Conditions" "HasStatus('INVOLVED_FIEND_OBEDIENCE', context.Target)"
-data "StatsFunctors" "ApplyStatus(INVOLVED_FIEND_PATRON_REWARD,100,1d4);RemoveStatus(INVOLVED_FIEND_PATRON_QUEST_SUFFER)"
+data "StatsFunctors" "ApplyStatus(INVOLVED_FIEND_PATRON_REWARD,100,1d4);RemoveStatus(INVOLVED_FIEND_PATRON_DEMAND_4)"
 
-new entry "INVOLVED_FIEND_PATRON_QUEST_SUFFER"
+new entry "INVOLVED_FIEND_PATRON_DEMAND_4"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE"
+using "INVOLVED_FIEND_PATRON_DEMAND_1"
 data "Description" "hc5ad94aag2c9dg429bga494ge7ce0d76f93b;1"
-data "Passives" "InvolvedFiendPatronQuestSuffer"
+data "Passives" "InvolvedFiendPatronDemand_4"
 data "Boosts" "UnlockSpell(Shout_InvolvedFiendShowObedience)"
 
-// Quest Boons
+// Demand Boons
 
     // Tier 1 - Common
 
@@ -110,7 +110,7 @@ data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):
 data "StackId" "BOON_SPELLSLOT"
 data "StackType" "Ignore"
 data "RemoveEvents" "OnStatusApplied"
-data "RemoveConditions" "HasStatus('INVOLVED_FIEND_PATRON_QUEST',context.Source)"
+data "RemoveConditions" "HasStatus('INVOLVED_FIEND_PATRON_DEMAND',context.Source)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "SoundStart" "Spell_Passive_Impact_Damage_DarkOnesBlessing_L1to3"
@@ -174,21 +174,21 @@ data "RemoveConditions" "ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVO
 
 // Technical
 
-    // Quest handling
+    // Demand handling
 
-new entry "INVOLVED_FIEND_PATRON_QUEST"
+new entry "INVOLVED_FIEND_PATRON_DEMAND"
 type "StatusData"
 data "StatusType" "BOOST"
-data "OnApplyFunctors" "ApplyStatus(INVOLVED_FIEND_PATRON_QUEST_TECHNICAL,100,0)"
+data "OnApplyFunctors" "ApplyStatus(INVOLVED_FIEND_PATRON_DEMAND_TECHNICAL,100,0)"
 data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 data "StackType" "Overwrite"
 data "RemoveEvents" "OnStatusApplied"
-data "RemoveConditions" "HasAnyStatus({'INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE','INVOLVED_FIEND_PATRON_QUEST_EVOCATION','INVOLVED_FIEND_PATRON_QUEST_OBLITERATE';'INVOLVED_FIEND_PATRON_QUEST_SUFFER'})"
+data "RemoveConditions" "HasAnyStatus({'INVOLVED_FIEND_PATRON_DEMAND_1','INVOLVED_FIEND_PATRON_DEMAND_2','INVOLVED_FIEND_PATRON_DEMAND_3';'INVOLVED_FIEND_PATRON_DEMAND_4'})"
 
-new entry "INVOLVED_FIEND_PATRON_QUEST_TECHNICAL"
+new entry "INVOLVED_FIEND_PATRON_DEMAND_TECHNICAL"
 type "StatusData"
 data "StatusType" "BOOST"
-data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_QUEST',context.Target) == 1)):ApplyStatus(INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_QUEST',context.Target) == 2)):ApplyStatus(INVOLVED_FIEND_PATRON_QUEST_EVOCATION,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_QUEST',context.Target) == 3)):ApplyStatus(INVOLVED_FIEND_PATRON_QUEST_OBLITERATE,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_QUEST',context.Target) == 4) and not HasStatus('INVOLVED_FIEND_OBEDIENCE')):ApplyStatus(INVOLVED_FIEND_PATRON_QUEST_SUFFER,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_QUEST',context.Target) == 4) and HasStatus('INVOLVED_FIEND_OBEDIENCE')):ApplyStatus(INVOLVED_FIEND_PATRON_QUEST,100,1d4)"
+data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_DEMAND',context.Target) == 1)):ApplyStatus(INVOLVED_FIEND_PATRON_DEMAND_1,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_DEMAND',context.Target) == 2)):ApplyStatus(INVOLVED_FIEND_PATRON_DEMAND_2,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_DEMAND',context.Target) == 3)):ApplyStatus(INVOLVED_FIEND_PATRON_DEMAND_3,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_DEMAND',context.Target) == 4) and not HasStatus('INVOLVED_FIEND_OBEDIENCE')):ApplyStatus(INVOLVED_FIEND_PATRON_DEMAND_4,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_DEMAND',context.Target) == 4) and HasStatus('INVOLVED_FIEND_OBEDIENCE')):ApplyStatus(INVOLVED_FIEND_PATRON_DEMAND,100,1d4)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
     // Reward handling
@@ -207,7 +207,7 @@ data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndi
 
 // Mechanics
 
-    // Quest 4
+    // Demand 4
 
 new entry "Shout_InvolvedFiendShowObedience"
 type "SpellData"
