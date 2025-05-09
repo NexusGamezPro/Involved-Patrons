@@ -1,3 +1,5 @@
+// This File is for Users Updating from 2.1.2.2 to a newer Version where Status Entries have been changed. With those Entries it should be a smooth transission. 
+
 // Fiend
 
 // Quests
