@@ -70,26 +70,15 @@ new entry "InvolvedFiendPatronQuestObliterate"
 type "PassiveData"
 using "InvolvedFiendPatronQuestDamageFire"
 data "StatsFunctorContext" "OnCast"
-data "Conditions" ""
-data "StatsFunctors" "IF(Enemy(context.Target) and IsSpell() and IsKillingBlow()):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_QUEST_OBLITERATE_KILL_TRACKER,100,1);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_QUEST_OBLITERATE_KILL_TRACKER',context.Source) >= 2)):ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d6);IF(ConditionResult(GetStatusDuration('INVOLVED_FIEND_PATRON_QUEST_OBLITERATE_KILL_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_FIEND_PATRON_QUEST_OBLITERATE);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_QUEST_OBLITERATE_KILL_TRACKER)"
+data "Conditions" "Enemy(context.Target) and IsSpell() and IsKillingBlow()"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_FIEND_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_FIEND_PATRON_QUEST_OBLITERATE)"
 
 new entry "INVOLVED_FIEND_PATRON_QUEST_OBLITERATE"
 type "StatusData"
 data "StatusType" "BOOST"
 using "INVOLVED_FIEND_PATRON_QUEST_DAMAGE_FIRE"
 data "Description" "h49da94e8cfd847899dd241bdce212dba8ga9;1"
-data "DescriptionParams" "2"
 data "Passives" "InvolvedFiendPatronQuestObliterate"
-
-new entry "INVOLVED_FIEND_PATRON_QUEST_OBLITERATE_KILL_TRACKER"
-type "StatusData"
-data "StatusType" "BOOST"
-data "StackId" "INVOLVED_PATRON_KILL_TRACKER"
-data "StackType" "Additive"
-data "RemoveEvents" "OnStatusRemoved"
-data "RemoveConditions" "not HasStatus('INVOLVED_FIEND_PATRON_QUEST_OBLITERATE')"
-// data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;FreezeDuration;ApplyToDead"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;FreezeDuration;ApplyToDead"
 
     // Tier 3 - Highest Chance for better Rewards, 1d4
 
