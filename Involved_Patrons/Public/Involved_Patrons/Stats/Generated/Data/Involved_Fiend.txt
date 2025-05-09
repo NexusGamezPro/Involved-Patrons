@@ -44,7 +44,7 @@ data "StackId" "PATRON_QUEST"
 data "StackType" "Overwrite"
 data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
 data "StatusGroups" "SG_RemoveOnRespec"
-data "StatusPropertyFlags" "DisableOverhead"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
 
         // Quest 2
 
