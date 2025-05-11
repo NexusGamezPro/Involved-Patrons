@@ -120,7 +120,7 @@ data "StackId" "BOON_SPELLSLOT"
 data "StackType" "Ignore"
 data "RemoveEvents" "OnStatusApplied"
 data "RemoveConditions" "HasStatus('INVOLVED_HEXBLADE_PATRON_DEMAND',context.Source)"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+data "StatusPropertyFlags" "DisableOverhead;DisablePortraitIndicator"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "SoundStart" "Spell_Passive_Impact_Damage_DarkOnesBlessing_L1to3"
 data "ApplyEffect" "3a76f32b-1b84-4298-90c6-7e430cb9f98b"
@@ -138,7 +138,7 @@ data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_HEXBLADE_PATRON_BOON_WEAPON_STATUS,100,-1)"
-data "StatusPropertyFlags" "DisablePortraitIndicator;DisableOverhead"
+data "StatusPropertyFlags" "DisableOverhead;DisablePortraitIndicator;DisableCombatlog"
 data "ApplyEffect" "e4d6914d-1a62-41b4-8932-eee907f2c200"
 
     // Tier 3 - Rarest
@@ -153,6 +153,7 @@ data "Passives" "ThirstingHexblade_Blade"
 data "StackId" "BOON_UNIQUE"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "DisableOverhead"
 
 // Favor Boon and Penalty - Work in Progress
 

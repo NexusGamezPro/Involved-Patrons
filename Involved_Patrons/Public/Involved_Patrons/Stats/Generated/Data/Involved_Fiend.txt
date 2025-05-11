@@ -140,7 +140,7 @@ data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_FIEND_PATRON_BOON_WEAPON_STATUS,100,-1)"
-data "StatusPropertyFlags" "DisablePortraitIndicator;DisableOverhead"
+data "StatusPropertyFlags" "DisableOverhead;DisablePortraitIndicator;DisableCombatlog"
 data "ApplyEffect" "e4d6914d-1a62-41b4-8932-eee907f2c200"
 
 new entry "InvolvedFiendPatronBoonWeapon"
@@ -164,6 +164,7 @@ data "Boosts" "Reroll(Damage,20,false)"
 data "StackId" "BOON_UNIQUE"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "DisableOverhead"
 
 // Favor Boon and Penalty - Work in Progress
 
