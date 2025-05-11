@@ -113,6 +113,7 @@ data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndi
 new entry "INVOLVED_HEXBLADE_PATRON_BOON_SPELLSLOT"
 type "StatusData"
 data "StatusType" "BOOST"
+data "DisplayName" "he51426a4913c48249c525e163812ad2d06c4;1"
 data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):ActionResource(WarlockSpellSlot,1,1);IF(HasPassive('UnlockedWarlockSpellSlotLevel2', context.Source)):ActionResource(WarlockSpellSlot,1,2);IF(HasPassive('UnlockedWarlockSpellSlotLevel3', context.Source)):ActionResource(WarlockSpellSlot,1,3);IF(HasPassive('UnlockedWarlockSpellSlotLevel4', context.Source)):ActionResource(WarlockSpellSlot,1,4);IF(HasPassive('UnlockedWarlockSpellSlotLevel5', context.Source)):ActionResource(WarlockSpellSlot,1,5)"
 data "StackId" "BOON_SPELLSLOT"
 data "StackType" "Ignore"
@@ -136,7 +137,8 @@ data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_HEXBLADE_PATRON_BOON_WEAPON_STATUS,100,-1)"
-data "StatusPropertyFlags" "DisablePortraitIndicator"
+data "StatusPropertyFlags" "DisablePortraitIndicator;DisableOverhead"
+data "ApplyEffect" "e4d6914d-1a62-41b4-8932-eee907f2c200"
 
     // Tier 3 - Rarest
 
@@ -204,6 +206,7 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "OnApplyFunctors" "ApplyStatus(INVOLVED_HEXBLADE_PATRON_REWARD_TECHNICAL,100,0);ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration+1)"
 data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+data "StackType" "Ignore"
 
 new entry "INVOLVED_HEXBLADE_PATRON_REWARD_TECHNICAL"
 type "StatusData"
