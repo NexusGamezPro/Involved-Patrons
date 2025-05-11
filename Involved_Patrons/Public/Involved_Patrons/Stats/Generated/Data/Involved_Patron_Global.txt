@@ -53,7 +53,7 @@ data "DescriptionParams" "1;DealDamage(1d4,Fire)"
 data "Icon" "Spell_Transmutation_MagicWeapon"
 data "StackId" "BOON_WEAPON"
 data "Boosts" "WeaponAttackRollBonus(1);WeaponDamage(1d4,Fire);"
-data "StatusPropertyFlags" "RemoveOnLongRest"
+data "StatusPropertyFlags" "RemoveOnLongRest;DisableOverhead"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusEffect" "8a4c7e6e-a629-4765-9c5d-d354838703d8"
 

@@ -138,7 +138,7 @@ data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_HEXBLADE_PATRON_BOON_WEAPON_STATUS,100,-1)"
-data "StatusPropertyFlags" "DisableOverhead;DisablePortraitIndicator;DisableCombatlog"
+data "StatusPropertyFlags" "DisablePortraitIndicator;DisableCombatlog"
 data "ApplyEffect" "e4d6914d-1a62-41b4-8932-eee907f2c200"
 
     // Tier 3 - Rarest
@@ -153,7 +153,6 @@ data "Passives" "ThirstingHexblade_Blade"
 data "StackId" "BOON_UNIQUE"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
-data "StatusPropertyFlags" "DisableOverhead"
 
 // Favor Boon and Penalty - Work in Progress
 

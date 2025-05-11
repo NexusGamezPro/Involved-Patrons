@@ -44,7 +44,7 @@ data "StackId" "PATRON_DEMAND"
 data "StackType" "Overwrite"
 data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
 data "StatusGroups" "SG_RemoveOnRespec"
-data "StatusPropertyFlags" "DisableCombatlog"
+data "StatusPropertyFlags" "DisableOverhead"
 
         // Demand 2 - Evocation
 
@@ -140,7 +140,8 @@ data "StackId" "BOON_WEAPON"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_FIEND_PATRON_BOON_WEAPON_STATUS,100,-1)"
-data "StatusPropertyFlags" "DisableOverhead;DisablePortraitIndicator;DisableCombatlog"
+data "StatusPropertyFlags" "DisablePortraitIndicator;DisableCombatlog"
+data "SoundStart" "Spell_Impact_Buff_ElementalWeaponFire_L1to3"
 data "ApplyEffect" "e4d6914d-1a62-41b4-8932-eee907f2c200"
 
 new entry "InvolvedFiendPatronBoonWeapon"
@@ -164,7 +165,6 @@ data "Boosts" "Reroll(Damage,20,false)"
 data "StackId" "BOON_UNIQUE"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
-data "StatusPropertyFlags" "DisableOverhead"
 
 // Favor Boon and Penalty - Work in Progress
 
