@@ -27,5 +27,6 @@
     <content contentuid="h851e549d85444d7b82fc10a461f669ce25ab" version="1">Show your Obedience to your Patron and reduce your maximum HP by [1]% until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
     <content contentuid="h184dd1b4b6cc4d7a9ac3968deac3455be5f0" version="1">Obedient</content>
     <content contentuid="h61b7c4a408fa4ed6bbdb88cb37f6a71109b0" version="1">You have shown your Patron your Obedience by sacrificing [1]% of your maximum HP until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
-    <content contentuid="he51426a4913c48249c525e163812ad2d06c4" version="1">Additional Spellslot</content>
+    <content contentuid="he51426a4913c48249c525e163812ad2d06c4" version="1">Additional Warlock Spell Slot</content>
+    <content contentuid="hd025ce55af5941d7b4cda1e161c989066c0g" version="1">Your Patron has rewarded you with an additional &lt;LSTag Tooltip="WarlockSpellSlot"&gt;Warlock Spell Slot&lt;/LSTag&gt; until the next &lt;LSTag Tooltip="ShortRest"&gt;short Rest&lt;/LSTag&gt;.</content>
 </contentList>
