@@ -30,4 +30,5 @@
     <content contentuid="he51426a4913c48249c525e163812ad2d06c4" version="1">Additional Warlock Spell Slot</content>
     <content contentuid="hd025ce55af5941d7b4cda1e161c989066c0g" version="1">Your Patron has rewarded you with an additional &lt;LSTag Tooltip="WarlockSpellSlot"&gt;Warlock Spell Slot&lt;/LSTag&gt; until the next &lt;LSTag Tooltip="ShortRest"&gt;short Rest&lt;/LSTag&gt;.</content>
     <content contentuid="hb826f9038d484f73b386eaeca60da4a3g669" version="1">Your Weapon is infused with your Patrons Power. It has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, deals an additional [2] and inflicts the Target with &lt;LSTag Type="Status" Tooltip="BURNING"&gt;Burning&lt;/LSTag&gt;.</content>
+    <content contentuid="h6b26c0e49d0a46e788696ae9eace71e8b41b" version="1">Your Weapon is infused with your Patrons Power. It has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and has a [2]% Chance to inflict the Target with &lt;LSTag Type="Status" Tooltip="CHARMED"&gt;Charmed&lt;/LSTag&gt; or &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;Frightened&lt;/LSTag&gt;.</content>
 </contentList>
