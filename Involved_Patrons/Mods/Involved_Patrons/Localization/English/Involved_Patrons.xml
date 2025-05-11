@@ -29,4 +29,5 @@
     <content contentuid="h61b7c4a408fa4ed6bbdb88cb37f6a71109b0" version="1">You have shown your Patron your Obedience by sacrificing [1]% of your maximum HP until the next &lt;LSTag Tooltip="LongRest"&gt;long Rest&lt;/LSTag&gt;.</content>
     <content contentuid="he51426a4913c48249c525e163812ad2d06c4" version="1">Additional Warlock Spell Slot</content>
     <content contentuid="hd025ce55af5941d7b4cda1e161c989066c0g" version="1">Your Patron has rewarded you with an additional &lt;LSTag Tooltip="WarlockSpellSlot"&gt;Warlock Spell Slot&lt;/LSTag&gt; until the next &lt;LSTag Tooltip="ShortRest"&gt;short Rest&lt;/LSTag&gt;.</content>
+    <content contentuid="hb826f9038d484f73b386eaeca60da4a3g669" version="1">Your Weapon is infused with your Patrons Power. It has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt;, deals an additional [2] and inflicts the Target with &lt;LSTag Type="Status" Tooltip="BURNING"&gt;Burning&lt;/LSTag&gt;.</content>
 </contentList>
