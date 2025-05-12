@@ -38,5 +38,6 @@
     <content contentuid="h73d3f53e37654ab29901dfa3f9811a283032" version="1">Archfey Brew</content>
     <content contentuid="h3ae0a2242f02409a84864b79d35b8224e465" version="1">Your Patron would like you to have some fun... or have fun with you. Get yourself something to &lt;LSTag Type="Status" Tooltip="DRUNK"&gt;drink&lt;/LSTag&gt;. Your Patron will enchant your Drink for a good &lt;LSTag Type="Status" Tooltip="INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK"&gt;buzz&lt;/LSTag&gt;.</content>
     <content contentuid="h09bca0e2a0564ffba87dd7649e0a04fbcgg3" version="1">Fey's Charm</content>
+    <content contentuid="h0ddf2d296dcb407bb879777cc8afecffcb61" version="1">Your Charisma is increased by 2 and you can use Enchantment and Illusion Spells and Cantrips as a &lt;LSTag Tooltip="Bonus_Action"&gt;Bonus Action&lt;/LSTag&gt;.</content>
     <content contentuid="h60aaf07ad4824daa8da8f67c77abb537g0be" version="1">You can use Enchantment and Illusion Spells and Cantrips as a &lt;LSTag Tooltip="Bonus_Action"&gt;Bonus Action&lt;/LSTag&gt;.</content>
 </contentList>
