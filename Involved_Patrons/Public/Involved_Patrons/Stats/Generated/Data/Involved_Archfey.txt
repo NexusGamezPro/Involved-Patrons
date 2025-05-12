@@ -28,7 +28,7 @@ data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Targe
 new entry "InvolvedArchfeyPatronDemand_1"
 type "PassiveData"
 data "StatsFunctorContext" "OnDamage"
-data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED','SLEEPING'},{},{},context.Target)"
+data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED','SG_Sleeping'},{},{},context.Target)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_1)"
 data "Properties" "IsHidden"
 
@@ -64,13 +64,13 @@ data "Passives" "InvolvedArchfeyPatronDemand_2"
 
     // Tier 2 - Higher Chance for better Rewards, 1d6
 
-        // Demand 3 - Eternal Sleep
+        // Demand 3 - Eternal Sleep - Tested
 
 new entry "InvolvedArchfeyPatronDemand_3"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
-data "StatsFunctorContext" "OnAttack"
-data "Conditions" "Enemy(context.Target) and IsKillingBlow() and HasStatus('SLEEPING',context.Target)"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "Enemy(context.Target) and IsKillingBlow() and HasStatus('SG_Sleeping',context.Target)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3)"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_3"
@@ -89,8 +89,8 @@ new entry "InvolvedArchfeyPatronDemand_4"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
 data "StatsFunctorContext" "OnStatusApplied"
-data "Conditions" "HasStatus('SG_DRUNK',context.Source)"
-data "StatsFunctors" "RemoveStatus(SG_Drunk);ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK,100,-1);ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD,100,1d4);RemoveStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4)"
+data "Conditions" ""
+data "StatsFunctors" "IF(HasStatus('SG_DRUNK')):RemoveStatus(SG_Drunk);IF(HasStatus('SG_DRUNK')):ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK,100,-1);IF(HasStatus('INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK')):ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD,100,1d4);IF(HasStatus('INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK')):RemoveStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4)"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_4"
 type "StatusData"
@@ -143,8 +143,9 @@ data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
 data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_STATUS,100,-1)"
 data "StatusPropertyFlags" "DisablePortraitIndicator;DisableCombatlog"
-data "SoundStart" "Spell_Impact_Buff_ElementalWeaponFire_L1to3"
-data "ApplyEffect" "e4d6914d-1a62-41b4-8932-eee907f2c200"
+// Todo: Find fitting Sound:
+data "SoundStart" ""
+data "ApplyEffect" "6994e8dc-14ac-48a5-9c8e-c1925031e852"
 
 new entry "InvolvedArchfeyPatronBoonWeapon"
 type "PassiveData"
