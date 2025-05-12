@@ -64,48 +64,50 @@ data "Passives" "InvolvedArchfeyPatronDemand_2"
 
     // Tier 2 - Higher Chance for better Rewards, 1d6
 
-        // Demand 3 - Name*
+        // Demand 3 - Eternal Sleep
 
 new entry "InvolvedArchfeyPatronDemand_3"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
-data "StatsFunctorContext" "OnCast;OnDamage;OnStatusApplied"
-data "Conditions" ""
-data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnCast)):RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3_TRACKER);IF(context.HasContextFlag(StatsFunctorContext.OnDamage) and Enemy(context.Target) and IsSpell() and IsKillingBlow()):ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3_TRACKER,100,1);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND_3_TRACKER',context.Source) >= 2)):ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d6);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND_3_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3);IF(context.HasContextFlag(StatsFunctorContext.OnStatusApplied) and ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND_3_TRACKER',context.Source) >= 2)):RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3_TRACKER)"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "Enemy(context.Target) and IsKillingBlow() and HasStatus('SLEEPING',context.Target)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3)"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_3"
 type "StatusData"
 data "StatusType" "BOOST"
 using "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
-data "Description" "h49da94e8cfd847899dd241bdce212dba8ga9;1"
-data "DescriptionParams" "2"
+data "Description" "hdade30de89f746b2b60fca6e55d93b6f3042;1"
+data "DescriptionParams" ""
 data "Passives" "InvolvedArchfeyPatronDemand_3"
-
-new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_3_TRACKER"
-type "StatusData"
-data "StatusType" "BOOST"
-data "StackId" "INVOLVED_PATRON_KILL_TRACKER"
-data "StackType" "Additive"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;FreezeDuration;ApplyToDead"
 
     // Tier 3 - Highest Chance for better Rewards, 1d4
 
-        // Demand 4 - Name*
+        // Demand 4 - One more Ale
 
 new entry "InvolvedArchfeyPatronDemand_4"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
 data "StatsFunctorContext" "OnStatusApplied"
-data "Conditions" "HasStatus('INVOLVED_ARCHFEY_OBEDIENCE', context.Target)"
-data "StatsFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD,100,1d4);RemoveStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4)"
+data "Conditions" "HasStatus('SG_DRUNK', context.Target)"
+data "StatsFunctors" "RemoveStatus(SG_Drunk);ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK,100,-1);ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD,100,1d4);RemoveStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4)"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_4"
 type "StatusData"
 data "StatusType" "BOOST"
 using "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
-data "Description" "hc5ad94aag2c9dg429bga494ge7ce0d76f93b;1"
+data "Description" "h3ae0a2242f02409a84864b79d35b8224e465;1"
 data "Passives" "InvolvedArchfeyPatronDemand_4"
-data "Boosts" "UnlockSpell(Shout_InvolvedArchfeyShowObedience)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK"
+type "StatusData"
+data "StatusType" "BOOST"
+using "DRUNK"
+data "DisplayName" "h73d3f53e37654ab29901dfa3f9811a283032;1"
+data "Description" "h1052d4821626435ba428f7294947e18fd5f9;1"
+data "StackId" ""
+data "Boosts" "Ability(Charisma, 1);Disadvantage(Ability, Dexterity);Disadvantage(Ability, Wisdom)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
 
 // Demand Boons
 
