@@ -89,8 +89,8 @@ new entry "InvolvedArchfeyPatronDemand_4"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
 data "StatsFunctorContext" "OnStatusApplied"
-data "Conditions" ""
-data "StatsFunctors" "IF(HasStatus('SG_DRUNK')):RemoveStatus(SG_Drunk);IF(HasStatus('SG_DRUNK')):ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK,100,-1);IF(HasStatus('INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK')):ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD,100,1d4);IF(HasStatus('INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK')):RemoveStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4)"
+data "Conditions" "HasStatus('SG_Drunk');"
+data "StatsFunctors" "ApplyStatus(DRUNK_DRUNKEN_MASTER,100,5);RemoveStatus(SG_Drunk)"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_4"
 type "StatusData"
@@ -152,7 +152,7 @@ type "PassiveData"
 data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnAttack"
-data "Conditions" "HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_STATUS', GetAttackWeapon(context.Source)) and IsWeaponAttack() and not IsMiss() and (Character() and not Dead() and RollDieAgainstDC(DiceType.d20,16);)"
+data "Conditions" "HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_STATUS', GetAttackWeapon(context.Source)) and IsWeaponAttack() and not IsMiss() and (Character() and not Dead() and RollDieAgainstDC(DiceType.d20,16));"
 data "StatsFunctors" "TARGET:ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL,100,1d4)"
 
 // Randomize Charm or Fright beeing inflicted
@@ -160,7 +160,7 @@ data "StatsFunctors" "TARGET:ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TEC
 new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL"
 type "StatusData"
 data "StatusType" "BOOST"
-data "OnApplyFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL',context.Target) >= 2)):ApplyStatus(CHARMED,100,2);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL',context.Target) <= 3)):ApplyStatus(FRIGHTENED,100,2);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL)"
+data "OnApplyFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL',context.Target) <= 2)):ApplyStatus(CHARMED,100,2);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL',context.Target) >= 3)):ApplyStatus(FRIGHTENED,100,2);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
     // Tier 3 - Rarest
