@@ -55,7 +55,7 @@ data "StackId" "BOON_WEAPON"
 data "Boosts" "WeaponAttackRollBonus(1);WeaponDamage(1d4,Fire);"
 data "StatusPropertyFlags" "RemoveOnLongRest;DisableOverhead"
 data "StatusGroups" "SG_RemoveOnRespec"
-data "StatusEffect" "8a4c7e6e-a629-4765-9c5d-d354838703d8"
+data "StatusEffect" "44d77ebf-fc9e-407d-b20f-257019351f2a"
 
 new entry "INVOLVED_HEXBLADE_PATRON_BOON_WEAPON_STATUS"
 type "StatusData"
