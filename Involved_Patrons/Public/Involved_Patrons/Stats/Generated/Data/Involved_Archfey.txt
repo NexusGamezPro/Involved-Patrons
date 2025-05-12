@@ -182,13 +182,35 @@ data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndi
 new entry "INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE"
 type "StatusData"
 data "StatusType" "BOOST"
-data "DisplayName" "h95773471gefe4g4b78gbffdg3826c4a19617;1"
-data "Description" "h6c984c10a4184662b85d709c1bcf243c1f0e;1"
+data "DisplayName" "h09bca0e2a0564ffba87dd7649e0a04fbcgg3;1"
+data "Description" "h60aaf07ad4824daa8da8f67c77abb537g0be;1"
 data "Icon" "PassiveFeature_ExpertDivination"
-data "Boosts" "Reroll(Damage,20,false)"
+data "Boosts" ""
 data "StackId" "BOON_UNIQUE"
 data "StackType" "Ignore"
 data "StatusGroups" "SG_RemoveOnRespec"
+data "Passives" "InvolvedArchfeyPatronBoonUnique"
+
+new entry "InvolvedArchfeyPatronBoonUnique"
+type "PassiveData"
+data "DisplayName" "h09bca0e2a0564ffba87dd7649e0a04fbcgg3;1"
+data "Description" "h60aaf07ad4824daa8da8f67c77abb537g0be;1"
+data "ExtraDescription" "h71374fc8g784cg41e3ga5f0g9cc48ba14c84;2"
+data "Properties" "IsToggled;Temporary"
+data "Icon" "PassiveFeature_ExpertDivination"
+data "ToggleOnFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE_STATUS, 100, -1)"
+data "ToggleOffFunctors" "RemoveStatus(INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE_STATUS)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE_STATUS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h09bca0e2a0564ffba87dd7649e0a04fbcgg3;1"
+data "Description" "h60aaf07ad4824daa8da8f67c77abb537g0be;1"
+data "Icon" "PassiveFeature_ExpertDivination"
+// Note: No "ModifyIconGlow()" because it does not highlight all Spells correctly
+data "Boosts" "UnlockSpellVariant(IsSpellOfSchool(SpellSchool.Enchantment) or IsSpellOfSchool(SpellSchool.Illusion),ModifyTooltipDescription(),ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint))"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
 // Favor Boon and Penalty - Work in Progress
 
