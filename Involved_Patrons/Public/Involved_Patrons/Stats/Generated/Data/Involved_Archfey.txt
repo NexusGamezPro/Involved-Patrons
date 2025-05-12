@@ -28,7 +28,7 @@ data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Targe
 new entry "InvolvedArchfeyPatronDemand_1"
 type "PassiveData"
 data "StatsFunctorContext" "OnDamage"
-data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED',context.Target})"
+data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED','SLEEPING',context.Target})"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_1)"
 data "Properties" "IsHidden"
 
