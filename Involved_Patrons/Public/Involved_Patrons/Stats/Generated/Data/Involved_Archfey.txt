@@ -23,12 +23,12 @@ data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Targe
 
     // Tier 1 - Normal Reward Chances, 1d8
 
-        // Demand 1 - Base - Charming Strike
+        // Demand 1 - Base - Charming Strike - Tested
 
 new entry "InvolvedArchfeyPatronDemand_1"
 type "PassiveData"
 data "StatsFunctorContext" "OnDamage"
-data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED','SLEEPING',context.Target})"
+data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED','SLEEPING'},{},{},context.Target)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_1)"
 data "Properties" "IsHidden"
 
@@ -46,7 +46,7 @@ data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,1
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead"
 
-        // Demand 2 - Name - Enchanting Illusion
+        // Demand 2 - Enchanting Illusion - Tested
 
 new entry "InvolvedArchfeyPatronDemand_2"
 type "PassiveData"
@@ -69,7 +69,7 @@ data "Passives" "InvolvedArchfeyPatronDemand_2"
 new entry "InvolvedArchfeyPatronDemand_3"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
-data "StatsFunctorContext" "OnDamage"
+data "StatsFunctorContext" "OnAttack"
 data "Conditions" "Enemy(context.Target) and IsKillingBlow() and HasStatus('SLEEPING',context.Target)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3)"
 
@@ -89,7 +89,7 @@ new entry "InvolvedArchfeyPatronDemand_4"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
 data "StatsFunctorContext" "OnStatusApplied"
-data "Conditions" "HasStatus('SG_DRUNK', context.Target)"
+data "Conditions" "HasStatus('SG_DRUNK',context.Source)"
 data "StatsFunctors" "RemoveStatus(SG_Drunk);ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK,100,-1);ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD,100,1d4);RemoveStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4)"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_4"
