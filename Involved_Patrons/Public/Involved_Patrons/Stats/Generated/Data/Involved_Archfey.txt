@@ -115,6 +115,7 @@ data "Description" "h1052d4821626435ba428f7294947e18fd5f9;1"
 data "StackId" ""
 data "Boosts" "Ability(Charisma, 1);Disadvantage(Ability, Dexterity);Disadvantage(Ability, Wisdom)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+data "StatusGroups" ""
 
 // Demand Boons
 
