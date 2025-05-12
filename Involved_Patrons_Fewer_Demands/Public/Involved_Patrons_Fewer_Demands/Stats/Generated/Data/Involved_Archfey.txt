@@ -1,1 +1,8 @@
-// Under Construction
+// Progression
+
+    // Demand handling
+
+new entry "InvolvedArchfeyPatron"
+type "PassiveData"
+using "InvolvedArchfeyPatron"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND,100,1d8);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"

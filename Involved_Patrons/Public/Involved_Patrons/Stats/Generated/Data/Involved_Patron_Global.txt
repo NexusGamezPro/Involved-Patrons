@@ -65,3 +65,13 @@ data "Description" "h65909a266f8e470796dd3026d19d0b0fed47;1"
 data "DescriptionParams" "1;DealDamage(LevelMapValue(HexbladeWeaponBoon), Necrotic)"
 data "Boosts" "WeaponAttackRollBonus(1);WeaponDamage(LevelMapValue(HexbladeWeaponBoon), Necrotic);"
 data "StatusEffect" "9c94e468-751d-4967-870a-15f368cd5e3a"
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_STATUS"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOLVED_FIEND_PATRON_BOON_WEAPON_STATUS"
+data "Description" "h6b26c0e49d0a46e788696ae9eace71e8b41b;1"
+data "DescriptionParams" "1;25"
+data "Boosts" "WeaponAttackRollBonus(1);"
+// Todo: Find fitting Effect:
+data "StatusEffect" "359918c9-0c9a-4714-a032-0deac359d00b"

@@ -1,0 +1,7 @@
+// Favor Boon and Penalty - Work in Progress
+
+new entry "INVOLVED_GREATOLDONE_PATRON_FAVOR_BOON"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOLVED_GREATOLDONE_PATRON_FAVOR_BOON"
+data "Boosts" ""

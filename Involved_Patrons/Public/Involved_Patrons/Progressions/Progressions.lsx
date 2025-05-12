@@ -16,7 +16,7 @@
         <node id="Progression">
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="GreatOldOne" />
-                    <attribute id="PassivesAdded" type="LSString" value="ClarifiedMortality;InvolvedGreatOldOnePatron" />
+                    <attribute id="PassivesAdded" type="LSString" value="ClarifiedMortality;InvolvedGreatOldOnePatron;InvolvedGreatOldOnePatronFavor" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="SelectSpells(65952d48-bb16-4ad7-b173-532182bf7770,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
                     <attribute id="TableUUID" type="guid" value="216e779e-3452-466c-933d-fb5723b90802" />
@@ -25,7 +25,7 @@
         <node id="Progression">
                     <attribute id="Level" type="uint8" value="1" />
                     <attribute id="Name" type="LSString" value="Archfey" />
-                    <attribute id="PassivesAdded" type="LSString" value="InvolvedArchfeyPatron" />
+                    <attribute id="PassivesAdded" type="LSString" value="InvolvedArchfeyPatron;InvolvedArchfeyPatronFavor" />
                     <attribute id="ProgressionType" type="uint8" value="1" />
                     <attribute id="Selectors" type="LSString" value="AddSpells(489ff3dd-b93e-4a96-b553-b59c07d5cd6f);SelectSpells(e0099b15-2599-4cba-a54b-b25ae03d6519,2,0,,,e9127b70-22b7-42a1-b172-d02f828f260a)" />
                     <attribute id="TableUUID" type="guid" value="7e1e0190-bd32-4ca6-9623-8adebeba74d4" />

@@ -1,1 +1,276 @@
-// Under Construction
+// Progression
+
+    // Demand handling
+
+new entry "InvolvedArchfeyPatron"
+type "PassiveData"
+data "DisplayName" "h8a8be88bgc57fg4cbegbdf5g6a9da982e8c9;1"
+data "Description" "h9a30d1dag9929g43b6g8764g610e3fa2148d;1"
+data "Icon" "PassiveFeature_ExpertDivination"
+data "Properties" "Highlighted"
+data "StatsFunctorContext" "OnShortRest;OnLongRest;OnCreate"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND,100,1d4);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
+
+    // Favor handling - Work in Progress
+
+new entry "InvolvedArchfeyPatronFavor"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnStatusApplied"
+data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) <= 1)):ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_FAVOR_PENALTY,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) == 3)):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER_WARNING,100,-1);IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) and ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER',context.Target) >= 15)):ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_FAVOR_BOON,100,-1)"
+
+// Demands
+
+    // Tier 1 - Normal Reward Chances, 1d8
+
+        // Demand 1 - Base - Charming Strike - Tested
+
+new entry "InvolvedArchfeyPatronDemand_1"
+type "PassiveData"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED','SG_Sleeping'},{},{},context.Target)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_1)"
+data "Properties" "IsHidden"
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "hea1b5aefb82a4f41a15a511cb5cd44665673;1"
+data "Description" "hc4f46aebb67c45ecbc93acdcc0e4e7fe1862;1"
+data "DescriptionParams" ""
+data "Icon" "PassiveFeature_ExpertDivination"
+data "Passives" "InvolvedArchfeyPatronDemand_1"
+data "StackId" "PATRON_DEMAND"
+data "StackType" "Overwrite"
+data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "DisableOverhead"
+
+        // Demand 2 - Enchanting Illusion - Tested
+
+new entry "InvolvedArchfeyPatronDemand_2"
+type "PassiveData"
+using "InvolvedArchfeyPatronDemand_1"
+data "StatsFunctorContext" "OnCast"
+data "Conditions" "IsSpell() and (IsSpellSchool(SpellSchool.Enchantment) or IsSpellSchool(SpellSchool.Illusion))"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_2)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_2"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
+data "Description" "h4292f1f54f544cb0a59bdfed9d9ee90ea287;1"
+data "Passives" "InvolvedArchfeyPatronDemand_2"
+
+    // Tier 2 - Higher Chance for better Rewards, 1d6
+
+        // Demand 3 - Eternal Sleep - Tested
+
+new entry "InvolvedArchfeyPatronDemand_3"
+type "PassiveData"
+using "InvolvedArchfeyPatronDemand_1"
+data "StatsFunctorContext" "OnDamage"
+data "Conditions" "Enemy(context.Target) and IsKillingBlow() and HasStatus('SG_Sleeping',context.Target)"
+data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d6);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_3)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_3"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
+data "Description" "hdade30de89f746b2b60fca6e55d93b6f3042;1"
+data "DescriptionParams" ""
+data "Passives" "InvolvedArchfeyPatronDemand_3"
+
+    // Tier 3 - Highest Chance for better Rewards, 1d4
+
+        // Demand 4 - One more Ale
+
+new entry "InvolvedArchfeyPatronDemand_4"
+type "PassiveData"
+using "InvolvedArchfeyPatronDemand_1"
+data "StatsFunctorContext" "OnStatusApplied"
+data "Conditions" "HasStatus('INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK');"
+data "StatsFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD,100,1d4);RemoveStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_4"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
+data "Description" "h3ae0a2242f02409a84864b79d35b8224e465;1"
+data "Passives" "InvolvedArchfeyPatronDemand_4;InvolvedArchfeyPatronDemand_4_Technical"
+
+new entry "InvolvedArchfeyPatronDemand_4_Technical"
+type "PassiveData"
+using "InvolvedArchfeyPatronDemand_1"
+data "StatsFunctorContext" "OnStatusApplied"
+data "Conditions" "HasStatus('SG_Drunk')"
+data "StatsFunctors" "RemoveStatus(SG_Drunk);ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK,100,-1)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_4_DRUNK"
+type "StatusData"
+data "StatusType" "BOOST"
+using "DRUNK"
+data "DisplayName" "h73d3f53e37654ab29901dfa3f9811a283032;1"
+data "Description" "h1052d4821626435ba428f7294947e18fd5f9;1"
+data "StackId" ""
+data "Boosts" "Ability(Charisma, 1);Disadvantage(Ability, Dexterity);Disadvantage(Ability, Wisdom)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog"
+data "StatusGroups" ""
+
+// Demand Boons
+
+    // Tier 1 - Common
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_SPELLSLOT"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "he51426a4913c48249c525e163812ad2d06c4;1"
+data "Description" "hd025ce55af5941d7b4cda1e161c989066c0g;1"
+data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):ActionResource(WarlockSpellSlot,1,1);IF(HasPassive('UnlockedWarlockSpellSlotLevel2', context.Source)):ActionResource(WarlockSpellSlot,1,2);IF(HasPassive('UnlockedWarlockSpellSlotLevel3', context.Source)):ActionResource(WarlockSpellSlot,1,3);IF(HasPassive('UnlockedWarlockSpellSlotLevel4', context.Source)):ActionResource(WarlockSpellSlot,1,4);IF(HasPassive('UnlockedWarlockSpellSlotLevel5', context.Source)):ActionResource(WarlockSpellSlot,1,5)"
+data "StackId" "BOON_SPELLSLOT"
+data "StackType" "Ignore"
+data "RemoveEvents" "OnStatusApplied"
+data "RemoveConditions" "HasStatus('INVOLVED_ARCHFEY_PATRON_DEMAND',context.Source)"
+data "StatusPropertyFlags" "DisableOverhead;DisablePortraitIndicator"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "SoundStart" "Spell_Passive_Impact_Damage_DarkOnesBlessing_L1to3"
+data "ApplyEffect" "3a76f32b-1b84-4298-90c6-7e430cb9f98b"
+
+    // Tier 2 - Rare
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
+data "Description" "h6b26c0e49d0a46e788696ae9eace71e8b41b;1"
+data "DescriptionParams" "1;50"
+data "Passives" "InvolvedArchfeyPatronBoonWeapon"
+data "Icon" "Spell_Transmutation_MagicWeapon"
+data "StackId" "BOON_WEAPON"
+data "StackType" "Ignore"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "OnApplyFunctors" "ApplyEquipmentStatus(MainHand,INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_STATUS,100,-1)"
+data "StatusPropertyFlags" "DisablePortraitIndicator;DisableCombatlog"
+// Todo: Find fitting Sound:
+data "SoundStart" ""
+data "ApplyEffect" "6994e8dc-14ac-48a5-9c8e-c1925031e852"
+
+new entry "InvolvedArchfeyPatronBoonWeapon"
+type "PassiveData"
+data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
+data "Properties" "IsHidden"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_STATUS', GetAttackWeapon(context.Source)) and IsWeaponAttack() and not IsMiss() and (Character() and not Dead() and RollDieAgainstDC(DiceType.d20,10));"
+data "StatsFunctors" "TARGET:ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER,100,1d4)"
+
+// Randomize Charm or Fright beeing inflicted
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER"
+type "StatusData"
+data "StatusType" "BOOST"
+data "OnApplyFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER_TECHNICAL,100,0)"
+data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER_TECHNICAL"
+type "StatusData"
+data "StatusType" "BOOST"
+data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER',context.Target) <= 2)):ApplyStatus(CHARMED,100,2);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER',context.Target) >= 3)):ApplyStatus(FRIGHTENED,100,2);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+    // Tier 3 - Rarest
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h09bca0e2a0564ffba87dd7649e0a04fbcgg3;1"
+data "Description" "h0ddf2d296dcb407bb879777cc8afecffcb61;1"
+data "Icon" "PassiveFeature_ExpertDivination"
+data "Boosts" "Ability(Charisma, 2)"
+data "StackId" "BOON_UNIQUE"
+data "StackType" "Ignore"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "Passives" "InvolvedArchfeyPatronBoonUnique"
+
+new entry "InvolvedArchfeyPatronBoonUnique"
+type "PassiveData"
+data "DisplayName" "h09bca0e2a0564ffba87dd7649e0a04fbcgg3;1"
+data "Description" "h60aaf07ad4824daa8da8f67c77abb537g0be;1"
+data "ExtraDescription" "h71374fc8g784cg41e3ga5f0g9cc48ba14c84;2"
+data "Properties" "IsToggled;Temporary"
+data "Icon" "PassiveFeature_ExpertDivination"
+data "ToggleOnFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE_STATUS, 100, -1)"
+data "ToggleOffFunctors" "RemoveStatus(INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE_STATUS)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE_STATUS"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "h09bca0e2a0564ffba87dd7649e0a04fbcgg3;1"
+data "Description" "h60aaf07ad4824daa8da8f67c77abb537g0be;1"
+data "Icon" "PassiveFeature_ExpertDivination"
+// Note: No "ModifyIconGlow()" because it does not highlight all Spells correctly
+data "Boosts" "UnlockSpellVariant(IsSpellOfSchool(SpellSchool.Enchantment) or IsSpellOfSchool(SpellSchool.Illusion),ModifyTooltipDescription(),ModifyUseCosts(Replace,BonusActionPoint,1,0,ActionPoint))"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "IgnoreResting;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+// Favor Boon and Penalty - Work in Progress
+
+new entry "INVOLVED_ARCHFEY_PATRON_FAVOR_BOON"
+type "StatusData"
+data "StatusType" "BOOST"
+data "DisplayName" "he8255fd40760458fa2d3a5a8db798f7931c5;1"
+data "Description" "h0a9ccc3f804b4a068713752f54b391901c8a;1"
+data "Icon" "PassiveFeature_ExpertDivination"
+data "Boosts" "IF(HasPassive('UnlockedWarlockSpellSlotLevel1', context.Source)):ActionResource(WarlockSpellSlot,1,1);IF(HasPassive('UnlockedWarlockSpellSlotLevel2', context.Source)):ActionResource(WarlockSpellSlot,1,2);IF(HasPassive('UnlockedWarlockSpellSlotLevel3', context.Source)):ActionResource(WarlockSpellSlot,1,3);IF(HasPassive('UnlockedWarlockSpellSlotLevel4', context.Source)):ActionResource(WarlockSpellSlot,1,4);IF(HasPassive('UnlockedWarlockSpellSlotLevel5', context.Source)):ActionResource(WarlockSpellSlot,1,5)"
+data "StackId" "PATRON_FAVOR_BOON"
+data "StackType" "Ignore"
+data "StatusGroups" "SG_RemoveOnRespec"
+// data "StatusPropertyFlags" "IgnoreResting;ApplyToDead"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;IgnoreResting;ApplyToDead"
+data "RemoveEvents" "OnStatusApplied"
+data "RemoveConditions" "ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') == 14)"
+
+new entry "INVOLVED_ARCHFEY_PATRON_FAVOR_PENALTY"
+type "StatusData"
+data "StatusType" "BOOST"
+using "INVOLVED_ARCHFEY_PATRON_FAVOR_BOON"
+data "DisplayName" "hff06e0a0dd354845a476ade3119ad6cc1gc7;1"
+data "Description" "h720138ca9bba43afaf4fc04bbda5ef2e473d;1"
+data "Boosts" ""
+data "StackId" "PATRON_FAVOR_PENALTY"
+data "RemoveConditions" "ConditionResult(GetStatusDuration('INVOLVED_PATRON_FAVOR_TRACKER') == 2)"
+
+// Technical
+
+    // Demand handling
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND"
+type "StatusData"
+data "StatusType" "BOOST"
+data "OnApplyFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_TECHNICAL,100,0)"
+data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+data "StackType" "Overwrite"
+data "RemoveEvents" "OnStatusApplied"
+data "RemoveConditions" "HasAnyStatus({'INVOLVED_ARCHFEY_PATRON_DEMAND_1','INVOLVED_ARCHFEY_PATRON_DEMAND_2','INVOLVED_ARCHFEY_PATRON_DEMAND_3';'INVOLVED_ARCHFEY_PATRON_DEMAND_4'})"
+
+new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_TECHNICAL"
+type "StatusData"
+data "StatusType" "BOOST"
+data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND',context.Target) == 1)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_1,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND',context.Target) == 2)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_2,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND',context.Target) == 3)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_3,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND',context.Target) == 4) and not HasStatus('INVOLVED_ARCHFEY_OBEDIENCE')):ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND_4,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_DEMAND',context.Target) == 4) and HasStatus('INVOLVED_ARCHFEY_OBEDIENCE')):ApplyStatus(INVOLVED_ARCHFEY_PATRON_DEMAND,100,1d4)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+    // Reward handling
+
+new entry "INVOLVED_ARCHFEY_PATRON_REWARD"
+type "StatusData"
+data "StatusType" "BOOST"
+data "OnApplyFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_REWARD_TECHNICAL,100,0);ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration+1)"
+data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+data "StackType" "Ignore"
+
+new entry "INVOLVED_ARCHFEY_PATRON_REWARD_TECHNICAL"
+type "StatusData"
+data "StatusType" "BOOST"
+data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_REWARD',context.Target) == 1) and HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE',context.Source)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_SPELLSLOT,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_REWARD',context.Target) == 1) and not HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE',context.Source)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_UNIQUE,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_REWARD',context.Target) == 2) and HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON',context.Source)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_SPELLSLOT,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_REWARD',context.Target) == 2) and not HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON',context.Source)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_REWARD',context.Target) == 3) and HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON',context.Source)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_SPELLSLOT,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_REWARD',context.Target) == 3) and not HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON',context.Source)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON,100,-1);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_REWARD',context.Target) >= 4)):ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_SPELLSLOT,100,-1);RemoveStatus(INVOLVED_ARCHFEY_PATRON_REWARD)"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+// Mechanics

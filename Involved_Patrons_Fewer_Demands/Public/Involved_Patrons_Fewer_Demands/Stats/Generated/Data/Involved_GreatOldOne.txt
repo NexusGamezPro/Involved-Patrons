@@ -1,1 +1,8 @@
-// Under Construction
+// Progression
+
+    // Demand handling
+
+new entry "InvolvedGreatOldOnePatron"
+type "PassiveData"
+using "InvolvedGreatOldOnePatron"
+data "StatsFunctors" "IF(not context.HasContextFlag(StatsFunctorContext.OnCreate)):ApplyStatus(SELF,INVOLVED_GREATOLDONE_PATRON_DEMAND,100,1d8);IF(context.HasContextFlag(StatsFunctorContext.OnCreate) and not HasStatus('INVOLVED_PATRON_FAVOR_TRACKER')):ApplyStatus(SELF,INVOLVED_PATRON_FAVOR_TRACKER,100,10)"
