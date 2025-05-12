@@ -23,12 +23,12 @@ data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Targe
 
     // Tier 1 - Normal Reward Chances, 1d8
 
-        // Demand 1 - Base - Name*
+        // Demand 1 - Base - Charming Strike
 
 new entry "InvolvedArchfeyPatronDemand_1"
 type "PassiveData"
 data "StatsFunctorContext" "OnDamage"
-data "Conditions" "IsDamageTypeFire(context.Target) and Enemy(context.Target)"
+data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED',context.Target})"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_1)"
 data "Properties" "IsHidden"
 
@@ -36,8 +36,8 @@ new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
 type "StatusData"
 data "StatusType" "BOOST"
 data "DisplayName" "hea1b5aefb82a4f41a15a511cb5cd44665673;1"
-data "Description" "h0adb828cgff0fg4427g84dageedcc08878c5;1"
-data "DescriptionParams" "DealDamage(1,Fire)"
+data "Description" "hc4f46aebb67c45ecbc93acdcc0e4e7fe1862;1"
+data "DescriptionParams" ""
 data "Icon" "PassiveFeature_ExpertDivination"
 data "Passives" "InvolvedArchfeyPatronDemand_1"
 data "StackId" "PATRON_DEMAND"
@@ -46,20 +46,20 @@ data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,1
 data "StatusGroups" "SG_RemoveOnRespec"
 data "StatusPropertyFlags" "DisableOverhead"
 
-        // Demand 2 - Name*
+        // Demand 2 - Name - Enchanting Illusion
 
 new entry "InvolvedArchfeyPatronDemand_2"
 type "PassiveData"
 using "InvolvedArchfeyPatronDemand_1"
 data "StatsFunctorContext" "OnCast"
-data "Conditions" "IsSpell() and IsSpellSchool(SpellSchool.Evocation)"
+data "Conditions" "IsSpell() and (IsSpellSchool(SpellSchool.Enchantment) or IsSpellSchool(SpellSchool.Illusion))"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_2)"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_2"
 type "StatusData"
 data "StatusType" "BOOST"
 using "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
-data "Description" "h6701b9ceg5045g481agb49ag8da75d8ef611;1"
+data "Description" "h4292f1f54f544cb0a59bdfed9d9ee90ea287;1"
 data "Passives" "InvolvedArchfeyPatronDemand_2"
 
     // Tier 2 - Higher Chance for better Rewards, 1d6
