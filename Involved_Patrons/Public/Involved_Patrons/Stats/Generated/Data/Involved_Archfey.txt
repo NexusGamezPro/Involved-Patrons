@@ -153,14 +153,20 @@ data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnAttack"
 data "Conditions" "HasStatus('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_STATUS', GetAttackWeapon(context.Source)) and IsWeaponAttack() and not IsMiss() and (Character() and not Dead() and RollDieAgainstDC(DiceType.d20,16));"
-data "StatsFunctors" "TARGET:ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL,100,1d4)"
+data "StatsFunctors" "TARGET:ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER,100,1d4)"
 
 // Randomize Charm or Fright beeing inflicted
 
-new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL"
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER"
 type "StatusData"
 data "StatusType" "BOOST"
-data "OnApplyFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL',context.Target) <= 2)):ApplyStatus(CHARMED,100,2);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL',context.Target) >= 3)):ApplyStatus(FRIGHTENED,100,2);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_TECHNICAL)"
+data "OnApplyFunctors" "ApplyStatus(INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER_TECHNICAL,100,0)"
+data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+
+new entry "INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER_TECHNICAL"
+type "StatusData"
+data "StatusType" "BOOST"
+data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER',context.Target) <= 2)):ApplyStatus(CHARMED,100,2);IF(ConditionResult(GetStatusDuration('INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER',context.Target) >= 3)):ApplyStatus(FRIGHTENED,100,2);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_BOON_WEAPON_RANDOMIZER)"
 data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
     // Tier 3 - Rarest
