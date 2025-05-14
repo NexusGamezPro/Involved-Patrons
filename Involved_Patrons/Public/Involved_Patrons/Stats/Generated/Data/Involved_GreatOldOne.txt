@@ -134,7 +134,7 @@ type "StatusData"
 data "StatusType" "BOOST"
 using "INVOLVED_BASE_PATRON_BOON_WEAPON_STATUS"
 data "Description" "h6b26c0e49d0a46e788696ae9eace71e8b41b;1"
-data "DescriptionParams" "1;25"
+data "DescriptionParams" "1;20"
 data "Boosts" "WeaponAttackRollBonus(1);"
 // Todo: Find fitting Effect:
 data "StatusEffect" "4c40f7ab-8513-49da-ae71-b7faae9079ca"
@@ -144,22 +144,8 @@ type "PassiveData"
 data "DisplayName" "h031dd24cf14d49b58ce7fb99934881956d01;1"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnAttack"
-data "Conditions" "HasStatus('INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_STATUS', GetAttackWeapon(context.Source)) and IsWeaponAttack() and not IsMiss() and (Character() and not Dead() and RollDieAgainstDC(DiceType.d20,10));"
-data "StatsFunctors" "TARGET:ApplyStatus(INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_RANDOMIZER,100,1d4)"
-
-// Randomize Charm or Fright beeing inflicted
-
-new entry "INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_RANDOMIZER"
-type "StatusData"
-data "StatusType" "BOOST"
-data "OnApplyFunctors" "ApplyStatus(INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_RANDOMIZER_TECHNICAL,100,0)"
-data "StatusPropertyFlags" "FreezeDuration;DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
-
-new entry "INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_RANDOMIZER_TECHNICAL"
-type "StatusData"
-data "StatusType" "BOOST"
-data "OnRemoveFunctors" "IF(ConditionResult(GetStatusDuration('INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_RANDOMIZER',context.Target) <= 2)):ApplyStatus(CHARMED,100,2);IF(ConditionResult(GetStatusDuration('INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_RANDOMIZER',context.Target) >= 3)):ApplyStatus(FRIGHTENED,100,2);RemoveStatus(SELF,INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_RANDOMIZER)"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
+data "Conditions" "HasStatus('INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_STATUS', GetAttackWeapon(context.Source)) and IsWeaponAttack() and not IsMiss() and (Character() and not Dead() and RollDieAgainstDC(DiceType.d20,17));"
+data "StatsFunctors" "If(Tagged('HUMANOID') and not Tagged('UNDEAD')):TARGET:ApplyStatus(DOMINATE_PERSON,100,10);IF(Tagged('BEAST')):TARGET:ApplyStatus(DOMINATE_PERSON,100,10)"
 
     // Tier 3 - Rarest
 
