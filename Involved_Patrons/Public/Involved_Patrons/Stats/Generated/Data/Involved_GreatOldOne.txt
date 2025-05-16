@@ -151,7 +151,7 @@ data "DisplayName" "hc70ecda581024a779b451d2c41a00850efb3;1"
 data "Properties" "IsHidden"
 data "StatsFunctorContext" "OnAttack"
 data "Conditions" "HasStatus('INVOLVED_GREATOLDONE_PATRON_BOON_WEAPON_STATUS', GetAttackWeapon(context.Source)) and IsWeaponAttack() and not IsMiss() and (Character() and not Dead() and RollDieAgainstDC(DiceType.d20,17));"
-data "StatsFunctors" "If(Tagged('HUMANOID') and not Tagged('UNDEAD')):TARGET:ApplyStatus(DOMINATE_PERSON,100,10);IF(Tagged('BEAST')):TARGET:ApplyStatus(DOMINATE_PERSON,100,10)"
+data "StatsFunctors" "TARGET:If(Tagged('HUMANOID') and not Tagged('UNDEAD')):ApplyStatus(DOMINATE_PERSON,100,10);TARGET:IF(Tagged('BEAST')):ApplyStatus(DOMINATE_PERSON,100,10)"
 
     // Tier 3 - Rarest
 
