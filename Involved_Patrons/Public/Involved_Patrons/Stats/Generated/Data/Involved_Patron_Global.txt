@@ -84,4 +84,4 @@ data "Description" "h6b26c0e49d0a46e788696ae9eace71e8b41b;1"
 data "DescriptionParams" "1;25"
 data "Boosts" "WeaponAttackRollBonus(1);"
 // Todo: Find fitting Effect:
-data "StatusEffect" "4c40f7ab-8513-49da-ae71-b7faae9079ca"
+data "StatusEffect" "359918c9-0c9a-4714-a032-0deac359d00b"
