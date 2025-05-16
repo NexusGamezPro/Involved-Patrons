@@ -27,17 +27,24 @@ data "StatsFunctors" "IF(HasStatus('INVOLVED_PATRON_FAVOR_TRACKER',context.Targe
 
 new entry "InvolvedArchfeyPatronDemand_1"
 type "PassiveData"
-using "InvolvedBasePatronDemand"
 data "StatsFunctorContext" "OnDamage"
 data "Conditions" "Enemy(context.Target) and HasAnyStatus({'CHARMED','FRIGHTENED','SG_Sleeping'},{},{},context.Target)"
 data "StatsFunctors" "ApplyStatus(SELF,INVOLVED_ARCHFEY_PATRON_REWARD,100,1d8);RemoveStatus(SELF,INVOLVED_ARCHFEY_PATRON_DEMAND_1)"
+data "Properties" "IsHidden"
 
 new entry "INVOLVED_ARCHFEY_PATRON_DEMAND_1"
 type "StatusData"
 data "StatusType" "BOOST"
-using "INVOLVED_BASE_PATRON_DEMAND"
+data "DisplayName" "hea1b5aefb82a4f41a15a511cb5cd44665673;1"
 data "Description" "hc4f46aebb67c45ecbc93acdcc0e4e7fe1862;1"
+data "DescriptionParams" ""
+data "Icon" "PassiveFeature_ExpertDivination"
 data "Passives" "InvolvedArchfeyPatronDemand_1"
+data "StackId" "PATRON_DEMAND"
+data "StackType" "Overwrite"
+data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
+data "StatusGroups" "SG_RemoveOnRespec"
+data "StatusPropertyFlags" "DisableOverhead"
 
         // Demand 2 - Enchanting Illusion - Tested
 

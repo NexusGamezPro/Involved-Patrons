@@ -42,25 +42,6 @@ type "PassiveData"
 using "UnlockedWarlockSpellSlotLevel1"
 data "DisplayName" "h490bc5f7766a4242abacba146b8fba29450f;1"
 
-// Demands
-
-    // Demands Base
-
-new entry "InvolvedBasePatronDemand"
-type "PassiveData"
-data "Properties" "IsHidden"
-
-new entry "INVOLVED_BASE_PATRON_DEMAND"
-type "StatusData"
-data "StatusType" "BOOST"
-data "DisplayName" "hea1b5aefb82a4f41a15a511cb5cd44665673;1"
-data "Icon" "PassiveFeature_ExpertDivination"
-data "StackId" "PATRON_DEMAND"
-data "StackType" "Overwrite"
-data "OnRemoveFunctors" "IF(Party()):ApplyStatus(INVOLVED_PATRON_FAVOR_TRACKER,100,Target.INVOLVED_PATRON_FAVOR_TRACKER.Duration-1)"
-data "StatusGroups" "SG_RemoveOnRespec"
-data "StatusPropertyFlags" "DisableOverhead"
-
 // Weapon Boon Status
 
 new entry "INVOLVED_FIEND_PATRON_BOON_WEAPON_STATUS"
