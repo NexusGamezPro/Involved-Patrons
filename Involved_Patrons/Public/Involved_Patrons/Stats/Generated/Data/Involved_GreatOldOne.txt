@@ -105,7 +105,7 @@ type "StatusData"
 data "StatusType" "BOOST"
 data "StackId" "INVOLVED_PATRON_KILL_TRACKER"
 data "StackType" "Additive"
-data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;FreezeDuration;ApplyToDead"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator;FreezeDuration;ApplyToDead"
 
 // Demand Boons
 
