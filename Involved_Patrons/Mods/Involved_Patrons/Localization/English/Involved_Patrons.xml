@@ -43,5 +43,5 @@
     <content contentuid="h2ebd4ffabfac47679770c2f53d838cbab71a" version="1">Kill a &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;frightened&lt;/LSTag&gt; Enemy to gain the Favor of your Patron.</content>
     <content contentuid="h4292f1f54f544cb0a59bdfed9d9ee90ea287" version="1">Use a Enchantment or Conjuration Spell or Cantrip to gain the favor of your Patron.</content>
     <content contentuid="hc70ecda581024a779b451d2c41a00850efb3" version="1">Your Weapon is infused with your Patrons Power. It has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and has a [2]% Chance to &lt;LSTag Type="Status" Tooltip="DOMINATE_PERSON"&gt;dominate&lt;/LSTag&gt; a Person or Beast.</content>
-    <content contentuid="h5b8e839c0b0b44f19f7c732c8662d824ec42" version="1">&lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;Frighten&lt;/LSTag&gt; [1] Enemies to gain the favor of your Patron.</content>
+    <content contentuid="h5b8e839c0b0b44f19f7c732c8662d824ec42" version="1">Kill [1] &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;frightened&lt;/LSTag&gt; Enemy to gain the Favor of your Patron.</content>
 </contentList>
