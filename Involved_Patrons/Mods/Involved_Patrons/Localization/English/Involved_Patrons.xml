@@ -44,4 +44,6 @@
     <content contentuid="h4292f1f54f544cb0a59bdfed9d9ee90ea287" version="1">Use a Enchantment or Conjuration Spell or Cantrip to gain the favor of your Patron.</content>
     <content contentuid="hc70ecda581024a779b451d2c41a00850efb3" version="1">Your Weapon is infused with your Patrons Power. It has a +[1] bonus to &lt;LSTag Tooltip="AttackRoll"&gt;Attack Rolls&lt;/LSTag&gt; and has a [2]% Chance to &lt;LSTag Type="Status" Tooltip="DOMINATE_PERSON"&gt;dominate&lt;/LSTag&gt; a Person or Beast.</content>
     <content contentuid="h5b8e839c0b0b44f19f7c732c8662d824ec42" version="1">Kill [1] &lt;LSTag Type="Status" Tooltip="FRIGHTENED"&gt;frightened&lt;/LSTag&gt; Enemy to gain the Favor of your Patron.</content>
+    <content contentuid="h4db94c74602c417abcc1d08597901edc3db8" version="1">Dominate Entity</content>
+    <content contentuid="h58fce6d297394543a1f290f9a698fde2c252" version="1">Make [1] humanoids and beasts fight alongside you. Every time the humanoid or beast takes damage, it makes a Wisdom &lt;LSTag Tooltip="SavingThrow"&gt;Saving Throw&lt;/LSTag&gt; against your domination.</content>
 </contentList>
